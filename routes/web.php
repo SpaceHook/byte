@@ -11,6 +11,10 @@ Route::get('/set-locale/{locale}', function ($locale) {
     return redirect()->route('home', ['locale' => session('locale', 'uk')]);
 })->name('set-locale');
 
+Route::get('/', function () {
+return "Hello, world!"; // Спрощений контент для перевірки
+});
+
 // Основні маршрути з префіксом `{locale}`
 Route::middleware([App\Http\Middleware\LocaleMiddleware::class])->group(function () {
     Route::prefix('{locale}')->where(['locale' => 'sk|uk|ru'])->group(function () {
