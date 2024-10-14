@@ -54,8 +54,8 @@
             </div>
 
             <div class="header__language-dropdown">
-                <a href="{{ url('set-locale/sk') }}" class="header__language-dropdown-lang">SK</a>
-                <a href="{{ url('set-locale/ru') }}" class="header__language-dropdown-lang">RU</a>
+                <a href="{{ url('/sk') }}" class="header__language-dropdown-lang">SK</a>
+                <a href="{{ url('/ru') }}" class="header__language-dropdown-lang">RU</a>
             </div>
         </div>
 

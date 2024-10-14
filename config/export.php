@@ -7,7 +7,7 @@ return [
      * the paths that need to be exported.
      */
     'crawl' => true,
-    'base_url' => 'http://127.0.0.1:8080', // або порт, на якому працює ваш Laravel-сервер
+    'base_url' => 'http://127.0.0.1:8000', // або порт, на якому працює ваш Laravel-сервер
 
     /*
      * Add additional paths to be added to the export here. If you're using the

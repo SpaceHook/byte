@@ -3,19 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/set-locale/{locale}', function ($locale) {
-    if (in_array($locale, ['sk', 'uk', 'ru'])) {
-        session(['locale' => $locale]);
-    }
 
-    return redirect()->route('home', ['locale' => session('locale', 'uk')]);
-})->name('set-locale');
 
 Route::get('/', function () {
-return "Hello, world!"; // Спрощений контент для перевірки
+    app()->setLocale('uk'); // Замініть 'uk' на вашу локаль за замовчуванням
+
+    return view('main_page.index');
 });
 
-// Основні маршрути з префіксом `{locale}`
 Route::middleware([App\Http\Middleware\LocaleMiddleware::class])->group(function () {
     Route::prefix('{locale}')->where(['locale' => 'sk|uk|ru'])->group(function () {
         Route::get('/', function () {
@@ -23,6 +18,7 @@ Route::middleware([App\Http\Middleware\LocaleMiddleware::class])->group(function
         })->name('home');
     });
 });
+
 
 // Маршрути для адмін-панелі без префікса локалі
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
