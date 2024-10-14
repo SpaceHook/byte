@@ -1,0 +1,230 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--primary_background);
+    color: var(--light);
+    height: 50px;
+    z-index: 2;
+
+    @include onDesktop {
+        height: 60px;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+
+        @include onDesktop {
+            justify-content: flex-start;
+        }
+    }
+
+    &__logo {
+        &-icon {
+            @include onDesktop {
+                width: 149px;
+                height: 40px;
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+
+        @include onDesktop {
+            width: 100%;
+        }
+    }
+
+    &__links {
+        display: none;
+
+        @media screen and (min-width: 1200px){
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-width: max-content;
+        }
+
+        &-link {
+            font-size: 18px;
+            color: var(--light);
+        }
+    }
+
+    &__socials {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__contact {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__phone {
+        color: var(--light);
+        font-size: 14px;
+        font-weight: 700;
+
+        @include onDesktop {
+            font-size: 18px;
+        }
+    }
+
+    &__button {
+        max-width: max-content;
+        padding: 10px 23px;
+    }
+
+    &__language {
+        position: relative;
+        margin-left: auto;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 10px;
+        }
+
+        &-current {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            transition: var(--hover_transition);
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--light);
+                color: #252729;
+            }
+
+            &:hover &-icon {
+                transform: rotate(180deg);
+            }
+
+            &--active {
+                background-color: var(--light);
+                color: #252729;
+            }
+
+            &--active &-icon {
+                transform: rotate(180deg);
+            }
+
+            &-name {
+                font-size: 16px;
+            }
+
+            &-icon {
+                transition: transform var(--hover_transition);
+            }
+        }
+
+        &-dropdown {
+            display: none;
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            transform: translate(-50%, 100%);
+            flex-direction: column;
+            background-color: var(--light);
+            color: #252729;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px 0 var(--primary_background);
+
+
+            &-lang {
+                padding: 10px 33px 10px 16px;
+                font-size: 16px;
+                transition: var(--hover_transition);
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgba(57, 46, 201, 0.2);
+                }
+            }
+        }
+    }
+
+    &__socials,
+    &__button,
+    &__language
+    {
+        display: none;
+
+        @include onDesktop {
+            display: flex;
+        }
+    }
+
+    &__burger {
+        &-icon {
+            @include onDesktop {
+                display: none;
+            }
+
+            &-open {
+                display: none;
+            }
+        }
+
+        &-menu {
+            position: fixed;
+            top: 50px;
+            left: 0;
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            height: calc(100% - 50px);
+            background-color: var(--secondary_background);
+            color: var(--light);
+            padding-top: 112px;
+            z-index: -1;
+
+            &-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                margin-bottom: 80px;
+
+                &-link {
+                    font-size: 36px;
+                    color: var(--light);
+                }
+            }
+
+            &-languages {
+                display: flex;
+                justify-content: center;
+                gap: 60px;
+
+                &-lang {
+                    font-size: 24px;
+                }
+            }
+
+            &-button {
+                border-radius: 0;
+                height: 50px;
+                margin-top: auto;
+            }
+        }
+    }
+}

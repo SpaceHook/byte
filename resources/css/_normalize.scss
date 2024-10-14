@@ -1,0 +1,41 @@
+.container {
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+
+  @include onDesktop {
+    max-width: 1202px;
+  }
+}
+
+.modal-open {
+  padding-right: 5px;
+  overflow: hidden;
+}
+
+button, a {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    border: 0;
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary_background);
+}

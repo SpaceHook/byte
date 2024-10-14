@@ -1,0 +1,70 @@
+.question-section {
+    background-image: url("@public/media/images/question_section_background.png");
+    background-size: cover;
+    background-position:  top center;
+    color: var(--light);
+
+    &__content {
+        position: relative;
+        padding: 53px 16px;
+
+        @include onDesktop {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            padding: 0 16px;
+        }
+    }
+
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -83%);
+        z-index: -1;
+
+        @include onDesktop {
+            position: static;
+            transform: initial;
+            width: 455px;
+            height: 377px;
+            z-index: 1;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 466px;
+
+        &-title {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 10px;
+
+            @include onDesktop {
+                font-size: 32px;
+            }
+        }
+
+        &-description {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.75;
+        }
+
+        &-field {
+            margin-bottom: 20px;
+        }
+
+        &-button {
+
+            @include onDesktop {
+                max-width: max-content;
+            }
+        }
+    }
+}

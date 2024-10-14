@@ -1,0 +1,50 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    overflow: hidden;
+
+    @include onDesktop {
+        padding-top: 110px;
+    }
+
+    &__banner {
+        margin-bottom: 60px;
+
+        @include onDesktop {
+            margin-bottom: 80px;
+        }
+    }
+
+    &__courses {
+        margin-bottom: 200px;
+
+        @include onDesktop {
+            margin-bottom: 140px;
+        }
+    }
+
+    &__form {
+        margin-bottom: 60px;
+
+        @include onDesktop {
+            margin-bottom: 140px;
+        }
+    }
+
+    &__news {
+        margin-bottom: 56px;
+
+        @include onDesktop {
+            margin-bottom: 140px;
+        }
+    }
+
+    &__contact {
+        margin-bottom: 300px;
+
+        @include onDesktop {
+            margin-bottom: 140px;
+        }
+    }
+}

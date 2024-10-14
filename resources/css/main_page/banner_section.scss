@@ -1,0 +1,70 @@
+.banner-section {
+    &__swiper {
+        border-radius: 10px;
+        margin-bottom: 26px;
+
+        @include onDesktop {
+            border-radius: 20px;
+            margin-bottom: 36px;
+        }
+
+        &-wrapper {
+
+        }
+
+        &-slide {
+            width: 100%;
+            height: 400px;
+
+            &-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+
+            &-button {
+                background-color: transparent;
+                transition: var(--hover_transition);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        &-pagination {
+            --swiper-pagination-bullet-size: 6.75px;
+            --swiper-pagination-color: var(--primary_background);
+            --swiper-pagination-bullet-horizontal-gap: 0;
+
+            position: static;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            max-width: max-content;
+            z-index: -1;
+
+            @include onDesktop {
+                --swiper-pagination-bullet-size: 12px;
+                gap: 10px;
+            }
+        }
+    }
+}
+
+.swiper-pagination-bullet-active {
+    width: 9px;
+    height: 9px;
+
+    @include onDesktop {
+        width: 16px;
+        height: 16px;
+    }
+}

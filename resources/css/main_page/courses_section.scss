@@ -1,0 +1,97 @@
+.courses-section {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+
+        @include onDesktop {
+            gap: 45px;
+        }
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+        gap: 20px;
+        width: 100%;
+
+        @include onDesktop {
+            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+            gap: 60px 30px;
+        }
+
+        &-card {
+            display: flex;
+            flex-direction: column;
+            border-radius: 13px;
+            box-shadow: 0 4px 4px 0 #00000040;
+
+            &-content {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                padding: 32px 24px 48px;
+            }
+
+            &-image {
+                border-radius: 13px 13px 0 0;
+            }
+
+            &-tag {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: max-content;
+                height: 28px;
+                padding: 0 15px;
+                font-size: 12px;
+                background-color: rgba(57, 46, 201, 0.2);
+                border-radius: 20px;
+                margin-bottom: 10px;
+            }
+
+            &-title {
+                font-size: 24px;
+                line-height: 28px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            &-gift {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+                margin-top: auto;
+
+                &-info {
+                    display: flex;
+                    flex-direction: column;
+
+                    &-text {
+                        font-size: 16px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        color: #8080808C;
+                        line-height: 14px;
+
+                        &-large {
+                            letter-spacing: 2px;
+                            color: var(--promo);
+                        }
+                    }
+                }
+            }
+
+            &-button {
+                min-height: 50px;
+            }
+        }
+    }
+}

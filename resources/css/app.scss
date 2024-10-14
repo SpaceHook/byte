@@ -1,0 +1,13 @@
+@import 'reset';
+@import 'variables';
+@import 'normalize';
+@import 'ui';
+@import 'header';
+@import 'footer';
+
+body {
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+}
