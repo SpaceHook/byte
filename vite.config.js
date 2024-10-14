@@ -9,6 +9,7 @@ export default defineConfig({
                 '@resources/css/app.scss',
                 '@resources/js/app.js',
                 '@resources/js/banner_section.js',
+                '@resources/js/countdown.js',
                 '@resources/css/main_page/index.scss',
                 '@resources/css/main_page/banner_section.scss',
                 '@resources/css/main_page/courses_section.scss',
@@ -20,7 +21,6 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    base: '/byte/',
     resolve: {
         alias: {
             '@public': path.resolve(__dirname, 'public'),

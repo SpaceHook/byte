@@ -4,38 +4,37 @@ return [
 
     'crawl' => true,
 
-'paths' => [],
+    'paths' => [],
 
-'include_files' => [
-'public' => '',
-],
+    'include_files' => [
+    'public' => '',
+    ],
 
-/*
-* Додайте цей блок коду для включення статичних ресурсів (CSS, JS, зображень, build).
-*/
-'assets' => [
-    'build', // додайте цю стрічку, щоб включити файли Vite
-    'css',
-    'js',
-    'images',
-    'media', // додайте це, щоб включити папку з іконками
-],
+    /*
+    * Додайте цей блок коду для включення статичних ресурсів (CSS, JS, зображень, build).
+    */
+    'assets' => [
+        'build', // додайте цю стрічку, щоб включити файли Vite
+        'css',
+        'js',
+        'images',
+        'media', // додайте це, щоб включити папку з іконками
+    ],
 
-'exclude_file_patterns' => [
-'/\.php$/',
-'/mix-manifest\.json$/',
-],
+    'exclude_file_patterns' => [
+    '/\.php$/',
+    '/mix-manifest\.json$/',
+    ],
 
-'clean_before_export' => true,
+    'clean_before_export' => true,
 
-'disk' => null,
+    'disk' => null,
 
-'before' => [
-// 'assets' => '/usr/local/bin/yarn production',
-],
+    'before' => [
+    // 'assets' => '/usr/local/bin/yarn production',
+    ],
 
-'after' => [
-// 'deploy' => '/usr/local/bin/netlify deploy --prod',
-],
-
+    'after' => [
+    // 'deploy' => '/usr/local/bin/netlify deploy --prod',
+    ],
 ];

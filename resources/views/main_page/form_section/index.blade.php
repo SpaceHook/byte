@@ -1,4 +1,4 @@
-@vite(['resources/css/main_page/form_section.scss'])
+@vite(['resources/js/countdown.js', 'resources/css/main_page/form_section.scss'])
 
 <div class="form-section__content container">
     <img src="/media/images/robot.png" width="182" height="177" alt="" class="form-section__image">
@@ -8,8 +8,8 @@
         </span>
         <div class="form-section__timer-container">
             <div class="form-section__timer-time">
-                <span class="form-section__timer-time-number">
-                    05
+                <span class="form-section__timer-time-number" id="day">
+                    00
                 </span>
                 <span class="form-section__timer-time-text">
                     днів
@@ -19,8 +19,8 @@
                 :
             </span>
             <div class="form-section__timer-time">
-                <span class="form-section__timer-time-number">
-                    10
+                <span class="form-section__timer-time-number" id="hour">
+                    00
                 </span>
                 <span class="form-section__timer-time-text">
                     годин
@@ -30,8 +30,8 @@
                 :
             </span>
             <div class="form-section__timer-time">
-                <span class="form-section__timer-time-number">
-                    22
+                <span class="form-section__timer-time-number" id="minute">
+                    00
                 </span>
                 <span class="form-section__timer-time-text">
                     хвилин
@@ -41,8 +41,8 @@
                 :
             </span>
             <div class="form-section__timer-time">
-                <span class="form-section__timer-time-number">
-                    35
+                <span class="form-section__timer-time-number" id="second">
+                    00
                 </span>
                 <span class="form-section__timer-time-text">
                     секунд
