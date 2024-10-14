@@ -83,9 +83,17 @@
                     Ваш номер телефону
                 </span>
 
-                <div class="form-section__form-fields-field-inputs">
-                    <input type="text" class="form-section__form-fields-field-input default-input">
-                </div>
+                <label class="form-section__form-fields-field-selector">
+                    <span class="form-section__form-fields-field-selector-dropdown-menu">
+                        <img src="/media/images/flag_sk.png" alt="" width="16" height="16" class="form-section__form-fields-field-selector-dropdown-menu-icon">
+                        <span class="form-section__form-fields-field-selector-dropdown-menu-number">+421</span>
+                        <svg class="form-section__form-fields-field-selector-dropdown-menu-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.6667 6L8.00004 10.6667L3.33337 6" stroke="black" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="form-section__form-fields-field-selector-line"></span>
+                    <input type="text" class="form-section__form-fields-field-input dropdown-input" placeholder="Phone number">
+                </label>
             </div>
         </div>
 
