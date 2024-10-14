@@ -20,6 +20,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    base: '/byte/',
     resolve: {
         alias: {
             '@public': path.resolve(__dirname, 'public'),
@@ -33,5 +34,4 @@ export default defineConfig({
             },
         },
     },
-    base: '/byte/',
 });
