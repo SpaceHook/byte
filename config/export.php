@@ -19,6 +19,7 @@ return [
 'css',
 'js',
 'images',
+'media', // додайте це, щоб включити папку з іконками
 ],
 
 'exclude_file_patterns' => [
