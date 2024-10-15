@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-
+use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CourseController;
 
 Route::get('/', function () {
     app()->setLocale('uk'); // Замініть 'uk' на вашу локаль за замовчуванням
@@ -13,9 +15,7 @@ Route::get('/', function () {
 
 Route::middleware([App\Http\Middleware\LocaleMiddleware::class])->group(function () {
     Route::prefix('{locale}')->where(['locale' => 'sk|uk|ru'])->group(function () {
-        Route::get('/', function () {
-            return view('main_page.index');
-        })->name('home');
+        Route::get('/', [MainPageController::class, 'index'])->name('main_page.index');
     });
 });
 
@@ -26,7 +26,9 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::resource('news', \App\Http\Controllers\Admin\NewsController::class);
+    Route::resource('news', NewsController::class);
+    Route::resource('banners', BannerController::class)->only(['index', 'create', 'store', 'destroy']);
+    Route::resource('courses', CourseController::class);
 });
 
 Route::get('/dashboard', function () {
