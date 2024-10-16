@@ -37,10 +37,11 @@
     &__info {
         display: flex;
         align-items: center;
-        gap: 50px;
+        gap: 20px;
 
         @include onDesktop {
             width: 100%;
+            gap: 50px;
         }
     }
 
