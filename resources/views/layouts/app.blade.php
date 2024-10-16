@@ -20,5 +20,7 @@
         <footer class="footer">
             @include('footer')
         </footer>
+
+        @include('modal')
     </body>
 </html>

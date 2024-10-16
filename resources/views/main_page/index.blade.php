@@ -2,7 +2,6 @@
 
 @vite(['resources/css/main_page/index.scss'])
 
-
 @section('content')
     <main class="main">
         <section class="main__banner banner-section">
