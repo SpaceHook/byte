@@ -3,9 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainPageController;
-use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\InfoController;
 
 Route::get('/', function () {
     app()->setLocale('uk'); // Замініть 'uk' на вашу локаль за замовчуванням
@@ -26,9 +26,9 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::resource('news', NewsController::class);
     Route::resource('banners', BannerController::class)->only(['index', 'create', 'store', 'destroy']);
     Route::resource('courses', CourseController::class);
+    Route::resource('info', InfoController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 });
 
 Route::get('/dashboard', function () {
