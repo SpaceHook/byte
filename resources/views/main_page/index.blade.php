@@ -4,11 +4,14 @@
 
 @section('content')
     <main class="main">
+        <button class="main__gift" onclick="openModal('lesson')">
+            <img src="/media/images/big_gift.png" alt="" class="main__gift-image">
+        </button>
         <section class="main__banner banner-section">
             @include('main_page.banner_section.index')
         </section>
 
-        <section class="main__courses courses-section">
+        <section id="courses" class="main__courses courses-section">
             @include('main_page.courses_section.index')
         </section>
 
@@ -20,7 +23,7 @@
             @include('main_page.news_section.index')
         </section>
 
-        <section class="main__contact contact-section">
+        <section id="contacts" class="main__contact contact-section">
             @include('main_page.contact_section.index')
         </section>
 

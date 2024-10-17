@@ -14,9 +14,11 @@
 }
 
 button, a {
-  &:hover {
-    cursor: pointer;
-  }
+    background: transparent;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 a {

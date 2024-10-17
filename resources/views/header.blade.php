@@ -10,15 +10,15 @@
     </a>
     <div class="header__info">
         <div class="header__links">
-            <a href="#" class="header__links-link">
+            <button class="header__links-link">
                 Про академію
-            </a>
-            <a href="#" class="header__links-link">
+            </button>
+            <button class="header__links-link" onclick="scrollToSection('courses')">
                 Курси
-            </a>
-            <a href="#" class="header__links-link">
+            </button>
+            <button class="header__links-link" onclick="scrollToSection('contacts')">
                 Контакти
-            </a>
+            </button>
         </div>
 
         <div class="header__socials">
@@ -35,7 +35,7 @@
                 +38 067 510 22 44
             </a>
 
-            <button class="header__button default-button">
+            <button class="header__button default-button" onclick="openModal('lesson')">
                 <span class="header__button-text">
                     Безкоштовний урок
                 </span>
@@ -66,24 +66,27 @@
 
         <div class="header__burger-menu">
             <div class="header__burger-menu-links">
-                <a href="" class="header__burger-menu-links-link">
+                <button class="header__burger-menu-links-link">
                     Про академію
-                </a>
-                <a href="" class="header__burger-menu-links-link">
+                </button>
+                <button class="header__burger-menu-links-link" onclick="scrollToSection('courses')">
                     Курси
-                </a>
-                <a href="" class="header__burger-menu-links-link">
+                </button>
+                <button class="header__burger-menu-links-link" onclick="scrollToSection('contacts')">
                     Контакти
-                </a>
+                </button>
             </div>
 
             <div class="header__burger-menu-languages">
-                <span class="header__burger-menu-languages-lang">
+                <a href="{{ url('/uk') }}" class="header__burger-menu-languages-lang">
+                    UA
+                </a>
+                <a href="{{ url('/sk') }}" class="header__burger-menu-languages-lang">
                     SK
-                </span>
-                <span class="header__burger-menu-languages-lang">
+                </a>
+                <a href="{{ url('/ru') }}" class="header__burger-menu-languages-lang">
                     RU
-                </span>
+                </a>
             </div>
 
             <button class="header__burger-menu-button default-button">

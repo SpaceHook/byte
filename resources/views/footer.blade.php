@@ -2,15 +2,15 @@
     <img src="/media/images/footer_logo.png" alt="" class="footer__logo">
 
     <div class="footer__links">
-        <a href="" class="footer__links-link">
+        <button class="footer__links-link">
             Про академію
-        </a>
-        <a href="" class="footer__links-link">
+        </button>
+        <button class="footer__links-link" onclick="scrollToSection('courses')">
             Курси
-        </a>
-        <a href="" class="footer__links-link">
+        </button>
+        <button class="footer__links-link" onclick="scrollToSection('contacts')">
             Контакти
-        </a>
+        </button>
     </div>
 
     <div class="footer__section footer__section-socials">

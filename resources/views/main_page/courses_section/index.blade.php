@@ -33,7 +33,7 @@
                     </div>
                 @endif
 
-                <button class="courses-section__cards-card-button default-button">Записатися</button>
+                <button onclick="openModal('consultation')" class="courses-section__cards-card-button default-button">Записатися</button>
             </div>
         </div>
         @endforeach

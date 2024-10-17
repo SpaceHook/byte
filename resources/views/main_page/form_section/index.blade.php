@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <form class="form-section__form">
+    <div class="form-section__form">
         <h3 class="form-section__form-title">
             Встигніть отримати <span class="form-section__form-title-highlight">безкоштовне заняття</span> в академії BYTE
         </h3>
@@ -58,50 +58,6 @@
             Просто заповніть дані, і ми зв'яжемося з вами найближчим часом!
         </p>
 
-        <div class="form-section__form-fields">
-            <div class="form-section__form-fields-field">
-                <span class="form-section__form-fields-field-name">
-                    Ваше імʼя
-                </span>
-
-                <div class="form-section__form-fields-field-inputs">
-                    <input type="text" class="form-section__form-fields-field-input default-input">
-                    <input type="text" class="form-section__form-fields-field-input default-input">
-                </div>
-            </div>
-            <div class="form-section__form-fields-field">
-                <span class="form-section__form-fields-field-name">
-                    Ваш email
-                </span>
-
-                <div class="form-section__form-fields-field-inputs">
-                    <input type="text" class="form-section__form-fields-field-input default-input">
-                </div>
-            </div>
-            <div class="form-section__form-fields-field">
-                <span class="form-section__form-fields-field-name">
-                    Ваш номер телефону
-                </span>
-
-                <label class="form-section__form-fields-field-selector">
-                    <span class="form-section__form-fields-field-selector-dropdown-menu">
-                        <img src="/media/images/flag_sk.png" alt="" width="16" height="16" class="form-section__form-fields-field-selector-dropdown-menu-icon">
-                        <span class="form-section__form-fields-field-selector-dropdown-menu-number">+421</span>
-                        <svg class="form-section__form-fields-field-selector-dropdown-menu-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.6667 6L8.00004 10.6667L3.33337 6" stroke="black" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span>
-                    <span class="form-section__form-fields-field-selector-line"></span>
-                    <input type="text" class="form-section__form-fields-field-input dropdown-input" placeholder="Phone number">
-                </label>
-            </div>
-        </div>
-
-        <button class="form-section__button arrow-button">
-            <span class="form-section__button-text">
-                Хочу безкоштовне заняття
-            </span>
-            <img src="/media/icons/right.svg" alt="" class="form-section__button-icon">
-        </button>
-    </form>
+        @include('form', ['fields' => ['name', 'email', 'phone'], 'buttonText' => 'Хочу безкоштовне заняття'])
+    </div>
 </div>

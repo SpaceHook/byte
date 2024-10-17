@@ -3,7 +3,7 @@
 <div class="question-section__content container">
     <img src="/media/images/people.png" alt="" width="321" height="266" class="question-section__image">
 
-    <form class="question-section__form">
+    <div class="question-section__form">
         <h3 class="question-section__form-title">
             У вас є питання?
         </h3>
@@ -12,17 +12,8 @@
             Розповімо про навчання в BYTE академії, відповімо на ваші запитання
         </div>
 
-        <div class="question-section__form-field">
-            <span class="question-section__form-field-name">
-                Ваш номер телефону
-            </span>
-
-            <input type="text" class="question-section__form-field-input default-input">
+        <div class="question-section__form-container">
+            @include('form', ['fields' => ['phone'], 'buttonText' => 'Чекаю на дзвінок'])
         </div>
-
-        <button class="question-section__form-button arrow-button">
-            <span class="question-section__form-button-text">Чекаю на дзвінок</span>
-            <img src="/media/icons/right.svg" alt="" class="question-section__form-button-icon">
-        </button>
-    </form>
+    </div>
 </div>

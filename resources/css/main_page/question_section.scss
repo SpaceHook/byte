@@ -66,5 +66,11 @@
                 max-width: max-content;
             }
         }
+
+        &-container {
+            .form__fields {
+                margin-bottom: 20px;
+            }
+        }
     }
 }

@@ -11,12 +11,12 @@ class LocaleMiddleware
     {
         $locale = $request->segment(1);
 
-        if (in_array($locale, ['sk', 'uk', 'ru'])) {
-            App::setLocale($locale);
-            session(['locale' => $locale]); // Зберігаємо локаль у сесії
-        } else {
-            App::setLocale(session('locale', 'uk')); // Локаль за замовчуванням
+        if (!in_array($locale, ['sk', 'uk', 'ru'])) {
+            return redirect()->to('/uk' . $request->getRequestUri());
         }
+
+        App::setLocale($locale);
+        session(['locale' => $locale]);
 
         return $next($request);
     }

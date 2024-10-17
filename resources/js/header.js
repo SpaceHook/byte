@@ -5,7 +5,7 @@ const closedBurger = document.querySelector('.header__burger-icon-close');
 const openedBurger = document.querySelector('.header__burger-icon-open');
 const burgerMenu = document.querySelector('.header__burger-menu');
 
-let burgerOpen = false;
+window.burgerOpen = false;
 
 languageSelector.addEventListener('mouseover', () => {
     dropdown.style.display = 'flex';
@@ -19,9 +19,10 @@ languageSelector.addEventListener('mouseout', () => {
 
 
 window.toggleBurgerMenu = () => {
-    burgerOpen = !burgerOpen;
+    window.burgerOpen = !burgerOpen;
     closedBurger.style.display = burgerOpen ? 'none' : 'block'
     openedBurger.style.display = burgerOpen ? 'block' : 'none'
     burgerMenu.style.display = burgerOpen ? 'flex' : 'none'
     document.body.classList.toggle('modal-open')
 }
+
