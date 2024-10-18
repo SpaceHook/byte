@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         modal.style.display = "flex";
-        document.body.classList.toggle('modal-open')
+
+        document.body.classList.add('modal-open')
     }
 
     document.querySelectorAll(".modal__close").forEach(closeBtn => {

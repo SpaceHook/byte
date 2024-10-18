@@ -44,6 +44,5 @@ document.addEventListener('submit', function (event) {
     if (form.classList.contains('form')) {
         event.preventDefault();
         openModal('success')
-        document.body.classList.toggle('modal-open')
     }
 });
