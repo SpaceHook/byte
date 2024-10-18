@@ -2,7 +2,7 @@
 
 <div class="contact-section__content container">
     <h2 class="contact-section__title">
-        Академія BYTE завжди на зв'язку
+        @lang('main_page.in_touch')
     </h2>
 
     <div class="contact-section__info">
@@ -17,7 +17,7 @@
                 <div class="contact-section__info-options-option-block"></div>
                 <div class="contact-section__info-options-option-block"></div>
                 <h5 class="contact-section__info-options-option-title">
-                    Зв'яжіться з нами
+                    @lang('main_page.contact_us')
                 </h5>
 
                 <div class="contact-section__info-options-option-items">
@@ -47,7 +47,7 @@
                 <div class="contact-section__info-options-option-block"></div>
                 <div class="contact-section__info-options-option-block"></div>
                 <h5 class="contact-section__info-options-option-title">
-                    Ми в мережі
+                    @lang('main_page.we_online')
                 </h5>
 
                 <div class="contact-section__info-options-option-socials">
@@ -65,7 +65,7 @@
                 <div class="contact-section__info-options-option-block"></div>
                 <div class="contact-section__info-options-option-block"></div>
                 <h5 class="contact-section__info-options-option-title">
-                    Заходьте в гості
+                    @lang('main_page.visit_us')
                 </h5>
 
                 <div class="contact-section__info-options-option-items">
@@ -78,7 +78,7 @@
                     <div class="contact-section__info-options-option-items-item">
                         <img src="/media/icons/cloak.svg" alt="" width="24" height="24" class="contact-section__info-options-option-items-item-icon">
                         <span class="contact-section__info-options-option-items-item-text">
-                            Пн-Нд з 9:00 до 19:00
+                            @lang('main_page.work_time')
                         </span>
                     </div>
                 </div>

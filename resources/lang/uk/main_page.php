@@ -1,4 +1,22 @@
 <?php
 return [
-    'welcome' => 'Привіт',
+    'it_courses' => 'IT курси',
+    'first_lesson' => 'Перший урок',
+    'free' => 'Безкоштовно',
+    'hurry_up_get' => 'Встигніть отримати <span class="form-section__form-title-highlight">безкоштовне заняття</span> в академії BYTE',
+    'just_fill' => 'Просто заповніть дані, і ми зв\'яжемося з вами найближчим часом!',
+    'timer_title' => 'Поспішай, залишилося:',
+    'days' => 'днів',
+    'hours' => 'годин',
+    'minutes' => 'хвилин',
+    'seconds' => 'секунд',
+    'educational_process' => 'Як проходить навчання в BYTE академії?',
+    'in_touch' => 'Академія BYTE завжди на зв\'язку',
+    'contact_us' => 'Зв\'яжіться з нами',
+    'we_online' => 'Ми в мережі',
+    'visit_us' => 'Заходьте в гості',
+    'work_time' => 'Пн-Нд з 9:00 до 19:00',
+    'copyright' => 'Copyright © 2024 BYTE Academy. Всі права захищені.',
+    'have_question' => 'У вас є питання?',
+    'will_tell' => 'Розповімо про навчання в BYTE академії, відповімо на ваші запитання',
 ];

@@ -2,7 +2,7 @@
 
 <div class="courses-section__content container">
     <h2 class="courses-section__title">
-        IT курси
+        @lang('main_page.it_courses')
     </h2>
 
     <div class="courses-section__cards">
@@ -24,16 +24,18 @@
                         <img src="/media/images/gift.png" alt="" class="courses-section__cards-card-gift-image">
                         <div class="courses-section__cards-card-gift-info">
                             <span class="courses-section__cards-card-gift-info-text">
-                                Перший урок
+                                @lang('main_page.first_lesson')
                             </span>
                             <span class="courses-section__cards-card-gift-info-text courses-section__cards-card-gift-info-text-large">
-                                БЕЗКОШТОВНО
+                                @lang('main_page.free')
                             </span>
                         </div>
                     </div>
                 @endif
 
-                <button onclick="openModal('consultation')" class="courses-section__cards-card-button default-button">Записатися</button>
+                <button onclick="openModal('consultation')" class="courses-section__cards-card-button default-button">
+                    @lang('buttons.button_2')
+                </button>
             </div>
         </div>
         @endforeach

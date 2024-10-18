@@ -4,7 +4,7 @@
     <img src="/media/images/robot.png" width="182" height="177" alt="" class="form-section__image">
     <div class="form-section__timer">
         <span class="form-section__timer-title">
-            Поспішай, залишилося:
+            @lang('main_page.timer_title')
         </span>
         <div class="form-section__timer-container">
             <div class="form-section__timer-time">
@@ -12,7 +12,7 @@
                     00
                 </span>
                 <span class="form-section__timer-time-text">
-                    днів
+                    @lang('main_page.days')
                 </span>
             </div>
             <span class="form-section__timer-dots">
@@ -23,7 +23,7 @@
                     00
                 </span>
                 <span class="form-section__timer-time-text">
-                    годин
+                    @lang('main_page.hours')
                 </span>
             </div>
             <span class="form-section__timer-dots">
@@ -34,7 +34,7 @@
                     00
                 </span>
                 <span class="form-section__timer-time-text">
-                    хвилин
+                    @lang('main_page.minutes')
                 </span>
             </div>
             <span class="form-section__timer-dots">
@@ -45,19 +45,19 @@
                     00
                 </span>
                 <span class="form-section__timer-time-text">
-                    секунд
+                    @lang('main_page.seconds')
                 </span>
             </div>
         </div>
     </div>
     <div class="form-section__form">
         <h3 class="form-section__form-title">
-            Встигніть отримати <span class="form-section__form-title-highlight">безкоштовне заняття</span> в академії BYTE
+            @lang('main_page.hurry_up_get')
         </h3>
         <p class="form-section__form-description">
-            Просто заповніть дані, і ми зв'яжемося з вами найближчим часом!
+            @lang('main_page.just_fill')
         </p>
 
-        @include('form', ['fields' => ['name', 'email', 'phone'], 'buttonText' => 'Хочу безкоштовне заняття'])
+        @include('form', ['fields' => ['name', 'email', 'phone'], 'buttonText' => __('buttons.button_3')])
     </div>
 </div>

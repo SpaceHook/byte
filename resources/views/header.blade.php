@@ -1,7 +1,7 @@
 <div class="header__content container">
     <a href="/" class="header__logo">
         <img
-            src="/media/images/byte_logo.png"
+            src="/media/icons/byte_logo.svg"
             alt=""
             class="header__logo-icon"
             width="89"
@@ -11,13 +11,13 @@
     <div class="header__info">
         <div class="header__links">
             <button class="header__links-link">
-                Про академію
+                @lang('navigation.about')
             </button>
             <button class="header__links-link" onclick="scrollToSection('courses')">
-                Курси
+                @lang('navigation.courses')
             </button>
             <button class="header__links-link" onclick="scrollToSection('contacts')">
-                Контакти
+                @lang('navigation.contacts')
             </button>
         </div>
 
@@ -37,7 +37,7 @@
 
             <button class="header__button default-button" onclick="openModal('lesson')">
                 <span class="header__button-text">
-                    Безкоштовний урок
+                    @lang('buttons.button_1')
                 </span>
             </button>
         </div>
@@ -67,13 +67,13 @@
         <div class="header__burger-menu">
             <div class="header__burger-menu-links">
                 <button class="header__burger-menu-links-link">
-                    Про академію
+                    @lang('navigation.about')
                 </button>
                 <button class="header__burger-menu-links-link" onclick="scrollToSection('courses')">
-                    Курси
+                    @lang('navigation.courses')
                 </button>
                 <button class="header__burger-menu-links-link" onclick="scrollToSection('contacts')">
-                    Контакти
+                    @lang('navigation.contacts')
                 </button>
             </div>
 
@@ -90,7 +90,7 @@
             </div>
 
             <button class="header__burger-menu-button default-button">
-                Безкоштовний урок
+                @lang('buttons.button_1')
             </button>
         </div>
     </div>

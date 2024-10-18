@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const modal = document.getElementById("modal");
         const allContents = modal.querySelectorAll(".modal__container");
 
-        // Ховаємо всі блоки з контентом
         allContents.forEach(content => content.style.display = "none");
 
         const activeContent = modal.querySelector(`.modal__container[data-modal-type="${type}"]`);

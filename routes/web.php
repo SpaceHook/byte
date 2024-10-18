@@ -10,13 +10,14 @@ use App\Http\Middleware\LocaleMiddleware;
 
 // Головний маршрут з підтримкою локалізації
 Route::middleware([LocaleMiddleware::class])->group(function () {
-    Route::prefix('{locale}')->where(['locale' => 'sk|uk|ru'])->group(function () {
-        Route::get('/', [MainPageController::class, 'index'])->name('main_page.index');
-    });
+Route::prefix('{locale}')->where(['locale' => 'sk|uk|ru'])->group(function () {
+Route::get('/', [MainPageController::class, 'index'])->name('main_page.index');
+});
 
-    Route::get('/', function () {
-        return redirect('/uk');
-    });
+// Якщо користувач заходить без локалі, перенаправляємо його на /uk
+Route::get('/', function () {
+return redirect('/uk');
+});
 });
 
 // Маршрути для адмін-панелі без префікса локалі

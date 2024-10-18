@@ -3,19 +3,19 @@
 
     <div class="footer__links">
         <button class="footer__links-link">
-            Про академію
+            @lang('navigation.about')
         </button>
         <button class="footer__links-link" onclick="scrollToSection('courses')">
-            Курси
+            @lang('navigation.courses')
         </button>
         <button class="footer__links-link" onclick="scrollToSection('contacts')">
-            Контакти
+            @lang('navigation.contacts')
         </button>
     </div>
 
     <div class="footer__section footer__section-socials">
         <h5 class="footer__section-title">
-            Ми в мережі
+            @lang('main_page.we_online')
         </h5>
 
         <div class="footer__socials">
@@ -30,7 +30,7 @@
 
     <div class="footer__section footer__section-contact">
         <h5 class="footer__section-title">
-            Зв'яжіться з нами
+            @lang('main_page.contact_us')
         </h5>
 
         <div class="footer__section-numbers">
@@ -44,6 +44,6 @@
     </div>
 
     <div class="footer__copyright">
-        Copyright © 2019 BYTE Academy. Всі права захищені.
+        @lang('main_page.copyright')
     </div>
 </div>

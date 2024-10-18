@@ -1,4 +1,22 @@
 <?php
 return [
-    'welcome' => 'Hi',
+    'it_courses' => 'IT kurzy',
+    'first_lesson' => 'Prvá lekcia',
+    'free' => 'Zdarma',
+    'hurry_up_get' => 'Ponáhľajte sa získať <span class="form-section__form-title-highlight">bezplatnú hodinu</span> v akadémii BYTE',
+    'just_fill' => 'Stačí vyplniť údaje a my vás budeme čoskoro kontaktovať!',
+    'timer_title' => 'Ponáhľaj sa, zostáva:',
+    'days' => 'dní',
+    'hours' => 'hodín',
+    'minutes' => 'minút',
+    'seconds' => 'sekúnd',
+    'educational_process' => 'Ako prebieha vzdelávanie v BYTE akadémii?',
+    'in_touch' => 'Akadémia BYTE je vždy k dispozícii',
+    'contact_us' => 'Kontaktujte nás',
+    'we_online' => 'Sme online',
+    'visit_us' => 'Navštívte nás',
+    'work_time' => 'Po-Ne od 9:00 do 19:00',
+    'copyright' => 'Copyright © 2024 BYTE Academy. Všetky práva vyhradené.',
+    'have_question' => 'Máte otázku?',
+    'will_tell' => 'Povieme vám o vzdelávaní v BYTE akadémii, odpovieme na vaše otázky',
 ];

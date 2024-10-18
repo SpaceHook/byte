@@ -5,15 +5,15 @@
 
     <div class="question-section__form">
         <h3 class="question-section__form-title">
-            У вас є питання?
+            @lang('main_page.have_question')
         </h3>
 
         <div class="question-section__form-description">
-            Розповімо про навчання в BYTE академії, відповімо на ваші запитання
+            @lang('main_page.will_tell')
         </div>
 
         <div class="question-section__form-container">
-            @include('form', ['fields' => ['phone'], 'buttonText' => 'Чекаю на дзвінок'])
+            @include('form', ['fields' => ['phone'], 'buttonText' => __('buttons.button_4')])
         </div>
     </div>
 </div>

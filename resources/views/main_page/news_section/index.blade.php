@@ -2,7 +2,7 @@
 
 <div class="news-section__content container">
     <h2 class="news-section__title">
-        Як проходить навчання в BYTE академії?
+        @lang('main_page.educational_process')
     </h2>
 
     <div class="news-section__cards">
