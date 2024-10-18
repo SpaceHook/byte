@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Функція для відкриття модального вікна з конкретним типом контенту
     window.openModal = (type) => {
         const modal = document.getElementById("modal");
         const allContents = modal.querySelectorAll(".modal__container");
