@@ -19,6 +19,8 @@ export default defineConfig({
                 '@resources/css/main_page/contact_section.scss',
                 '@resources/css/main_page/question_section.scss',
                 '@resources/css/main_page/form.scss',
+                '@resources/css/admin/index.scss',
+                '@resources/css/admin/menu.scss',
             ],
             refresh: true,
         }),

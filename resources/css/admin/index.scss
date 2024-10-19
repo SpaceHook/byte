@@ -1,0 +1,29 @@
+@import '@resources/css/reset';
+@import '@resources/css/normalize';
+@import '@resources/css/admin/ui';
+@import '@resources/css/admin/variables';
+
+body {
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.admin {
+    display: flex;
+    height: 100vh;
+
+    &__section {
+        padding: 50px 20px;
+        width: 100%;
+
+        &-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+
+        }
+    }
+}

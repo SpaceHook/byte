@@ -1,0 +1,47 @@
+.title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    height: 40px;
+    width: 100%;
+    max-width: max-content;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--light);
+    background-color: var(--primary_background);
+    transition: var(--hover_transition);
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.button-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    max-width: max-content;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: var(--primary_background);
+    color: var(--light);
+    transition: var(--hover_transition);
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &--delete {
+        background-color: var(--delete);
+    }
+}
