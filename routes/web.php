@@ -25,7 +25,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::resource('banners', BannerController::class)->only(['index', 'create', 'store', 'destroy']);
+    Route::resource('banners', BannerController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::resource('courses', CourseController::class);
     Route::resource('info', InfoController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 });
