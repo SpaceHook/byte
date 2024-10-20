@@ -23,6 +23,7 @@ export default defineConfig({
                 '@resources/css/admin/menu.scss',
                 '@resources/css/admin/courses.scss',
                 '@resources/css/admin/info.scss',
+                '@resources/css/admin/submissions.scss',
             ],
             refresh: true,
         }),

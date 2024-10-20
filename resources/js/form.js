@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
             if (!csrfTokenMeta) {
-                console.error('CSRF-токен не знайдено у мета-тегу.');
                 return;
             }
             const csrfToken = csrfTokenMeta.getAttribute('content');
@@ -67,13 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        document.getElementById('result').innerHTML = 'Форма успішно надіслана!';
-                    } else {
-                        document.getElementById('result').innerHTML = 'Помилка при відправці форми.';
+                        openModal('success')
                     }
                 })
                 .catch(error => {
-                    document.getElementById('result').innerHTML = `Помилка: ${error.message}`;
+                    console.log(error)
                 });
         }
     });

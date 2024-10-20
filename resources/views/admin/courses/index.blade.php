@@ -25,7 +25,8 @@
         <span class="courses__text">
             {{$course->age_group}}
         </span>
-        <input type="checkbox" checked="{{$course->is_free}}" disabled class="courses__text"/>
+
+        <input type="checkbox" @if($course->is_free) checked @endif disabled class="courses__text"/>
         <img src="{{ asset('storage/' . $course->image) }}" alt="Банер" class="courses__image">
 
         <div class="courses__actions">

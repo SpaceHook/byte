@@ -15,5 +15,8 @@
         <a href="{{ route('admin.info.index') }}" class="menu__links-link">
             Новини
         </a>
+        <a href="{{ route('admin.submissions.index') }}" class="menu__links-link">
+            Клієнти
+        </a>
     </div>
 </div>

@@ -58,27 +58,33 @@ public function edit(Course $course)
 
     public function update(Request $request, Course $course)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'age_group' => 'required|string',
-            'image' => 'nullable|image|max:2048',
-            'is_free' => 'boolean',
-        ]);
+    // Примусово встановлюємо is_free як true або false
+    $request->merge([
+    'is_free' => $request->has('is_free') ? true : false,
+    ]);
 
-        $course->title = $request->title;
-        $course->age_group = $request->age_group;
-        $course->is_free = $request->is_free;
+    $request->validate([
+    'title' => 'required|string|max:255',
+    'age_group' => 'required|string',
+    'image' => 'nullable|image|max:2048',
+    'is_free' => 'boolean',
+    ]);
 
-        if ($request->hasFile('image')) {
-            $course->image = $request->file('image')->store('courses', 'public');
-        }
+    $course->title = $request->title;
+    $course->age_group = $request->age_group;
+    $course->is_free = $request->is_free;
 
-        $course->save();
-
-        return redirect()->route('admin.courses.index')->with('success', 'Курс успішно оновлено');
+    if ($request->hasFile('image')) {
+    $course->image = $request->file('image')->store('courses', 'public');
     }
 
-    public function destroy(Course $course)
+    $course->save();
+
+    return redirect()->route('admin.courses.index')->with('success', 'Курс успішно оновлено');
+    }
+
+
+public function destroy(Course $course)
     {
         if ($course->image) {
             \Storage::disk('public')->delete($course->image);

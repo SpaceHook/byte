@@ -29,7 +29,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::resource('banners', BannerController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::resource('courses', CourseController::class);
     Route::resource('info', InfoController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
-    Route::get('submissions', [FormSubmissionController::class, 'index'])->name('submissions.index');
+    Route::resource('submissions', FormSubmissionController::class)->only(['index', 'destroy']);
 });
 
 Route::middleware('auth')->group(function () {

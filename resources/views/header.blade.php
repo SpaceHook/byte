@@ -8,7 +8,6 @@
             height="24"
         >
     </a>
-    <div id="result" class="">1</div>
     <div class="header__info">
         <div class="header__links">
             <button class="header__links-link">

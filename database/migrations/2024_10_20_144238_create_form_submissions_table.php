@@ -9,7 +9,7 @@ class CreateFormSubmissionsTable extends Migration
     public function up()
     {
         Schema::create('form_submissions', function (Blueprint $table) {
-             $table->id();
+            $table->id();
             $table->string('name')->nullable(); // Поле може бути null
             $table->string('surname')->nullable(); // Поле може бути null
             $table->string('email')->nullable(); // Поле може бути null
