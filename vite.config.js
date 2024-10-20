@@ -21,6 +21,8 @@ export default defineConfig({
                 '@resources/css/main_page/form.scss',
                 '@resources/css/admin/index.scss',
                 '@resources/css/admin/menu.scss',
+                '@resources/css/admin/courses.scss',
+                '@resources/css/admin/info.scss',
             ],
             refresh: true,
         }),

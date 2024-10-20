@@ -1,24 +1,31 @@
 @extends('layouts.admin')
 
+@vite(['resources/css/admin/info.scss'])
+
 @section('content')
 <div class="admin__section-header">
     <h1 class="title">Список новин</h1>
     <a href="{{ route('admin.info.create') }}" class="button">Додати новину</a>
 </div>
-<table>
-    <thead>
-    <tr>
-        <th>Заголовок</th>
-        <th>Зображення</th>
-        <th>Дії</th>
-    </tr>
-    </thead>
-    <tbody>
+
+<div class="info">
+    <span class="info__title">ID</span>
+    <span class="info__title">Назва</span>
+    <span class="info__title">Картинка</span>
+    <span class="info__title">Дії</span>
     @foreach ($infos as $info)
-    <tr>
-        <td>{{ $info->title }}</td>
-        <td><img src="{{ asset('storage/' . $info->image) }}" alt="Зображення інформації" width="100"></td>
-        <td>
+        <span class="info__text">
+            {{$info->id}}
+        </span>
+        <span class="info__text">
+            {{$info->title}}
+        </span>
+        <img src="{{ asset('storage/' . $info->image) }}" alt="Банер" class="info__image">
+
+        <div class="info__actions">
+            <a href="{{ route('admin.info.edit', $info->id) }}" class="button-action">
+                <img src="/media/icons/edit.svg" alt="" width="24" height="24">
+            </a>
             <form action="{{ route('admin.info.destroy', $info->id) }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')
@@ -26,9 +33,7 @@
                     <img src="/media/icons/trash.svg" alt="" width="24" height="24">
                 </button>
             </form>
-        </td>
-    </tr>
+        </div>
     @endforeach
-    </tbody>
-</table>
+</div>
 @endsection

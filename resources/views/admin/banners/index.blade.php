@@ -9,8 +9,8 @@
 
 <div class="banners">
     <span class="banners__title">ID</span>
-    <span class="banners__title">Десктоп</span>
-    <span class="banners__title">Телефон</span>
+    <span class="banners__title">Картинка(Десктоп)</span>
+    <span class="banners__title">Картинка(Телефон)</span>
     <span class="banners__title">Дії</span>
     @foreach ($banners as $banner)
         <div class="banners__id">

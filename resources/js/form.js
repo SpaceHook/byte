@@ -38,11 +38,43 @@ function handleClickOutside(event) {
     }
 }
 
-document.addEventListener('submit', function (event) {
-    const form = event.target;
+document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('submit', function (event) {
+        const form = event.target;
 
-    if (form.classList.contains('form')) {
-        event.preventDefault();
-        openModal('success')
-    }
+        // Переконайтеся, що форма має потрібний клас
+        if (form.classList.contains('form')) {
+            event.preventDefault();
+            const formData = new FormData(form);
+
+            const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
+            if (!csrfTokenMeta) {
+                console.error('CSRF-токен не знайдено у мета-тегу.');
+                return;
+            }
+            const csrfToken = csrfTokenMeta.getAttribute('content');
+
+            const actionUrl = form.getAttribute('action'); // Отримуємо action з атрибута форми
+
+            fetch(actionUrl, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Accept': 'application/json',
+                },
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('result').innerHTML = 'Форма успішно надіслана!';
+                    } else {
+                        document.getElementById('result').innerHTML = 'Помилка при відправці форми.';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = `Помилка: ${error.message}`;
+                });
+        }
+    });
 });

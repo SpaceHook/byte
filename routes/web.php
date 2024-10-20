@@ -6,12 +6,14 @@ use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\InfoController;
+use App\Http\Controllers\Admin\FormSubmissionController;
 use App\Http\Middleware\LocaleMiddleware;
+use App\Http\Controllers\FormController;
 
-// Головний маршрут з підтримкою локалізації
 Route::middleware([LocaleMiddleware::class])->group(function () {
     Route::prefix('{locale}')->where(['locale' => 'sk|uk|ru'])->group(function () {
         Route::get('/', [MainPageController::class, 'index'])->name('main_page.index');
+        Route::post('/form-submit', [FormController::class, 'submit'])->name('form.submit');
     });
 
     Route::get('/', function () {
@@ -19,7 +21,6 @@ Route::middleware([LocaleMiddleware::class])->group(function () {
     });
 });
 
-// Маршрути для адмін-панелі без префікса локалі
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard');
@@ -28,9 +29,9 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::resource('banners', BannerController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::resource('courses', CourseController::class);
     Route::resource('info', InfoController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::get('submissions', [FormSubmissionController::class, 'index'])->name('submissions.index');
 });
 
-// Маршрути для профілю користувача
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
