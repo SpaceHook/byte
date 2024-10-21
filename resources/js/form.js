@@ -1,3 +1,6 @@
+let selectedNumber = '+380'
+
+
 window.toggleDropdownMenu = (dropdown, event) => {
     event.stopPropagation(); // Зупиняємо поширення події
 
@@ -19,7 +22,7 @@ window.selectDropdownItem = (item, event) => {
     event.stopPropagation();
 
     const dropdown = item.closest('.form__fields-field-selector-dropdown');
-    const selectedNumber = item.querySelector('.form__fields-field-selector-dropdown-number').innerText;
+    selectedNumber = item.querySelector('.form__fields-field-selector-dropdown-number').innerText;
     const selectedFlag = item.querySelector('.form__fields-field-selector-dropdown-icon').getAttribute('src');
 
     dropdown.querySelector('.form__fields-field-selector-dropdown-number').innerText = selectedNumber;
@@ -38,40 +41,77 @@ function handleClickOutside(event) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.addEventListener('submit', function (event) {
-        const form = event.target;
+document.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-        // Переконайтеся, що форма має потрібний клас
-        if (form.classList.contains('form')) {
-            event.preventDefault();
-            const formData = new FormData(form);
+    const form = event.target;
+    const fieldsWithName = [...form.querySelectorAll('[name]')];
+    const regEx = /^\d{9}$/;
+    let hasError = false;
+    let name = ''
+    let surname = ''
+    let email = ''
+    let phone = ''
 
-            const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
-            if (!csrfTokenMeta) {
-                return;
-            }
-            const csrfToken = csrfTokenMeta.getAttribute('content');
+    fieldsWithName.shift();
 
-            const actionUrl = form.getAttribute('action'); // Отримуємо action з атрибута форми
+    console.log(fieldsWithName)
 
-            fetch(actionUrl, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken,
-                    'Accept': 'application/json',
-                },
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        openModal('success')
-                    }
-                })
-                .catch(error => {
-                    console.log(error)
-                });
+    fieldsWithName.forEach(field => {
+
+        switch (field.name) {
+            case 'name':
+                name = field.value;
+                break
+            case 'surname':
+                surname = field.value;
+                break
+            case 'email':
+                email = field.value;
+                break
+            case 'phone':
+                phone = selectedNumber + field.value;
+                break
         }
-    });
+    })
+
+    if (hasError) {
+        return;
+    }
+
+
+    if (form.classList.contains('form')) {
+        const formData = {
+            name: name,
+            surname: surname,
+            email: email,
+            phone: phone,
+        };
+        const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
+        if (!csrfTokenMeta) {
+            return;
+        }
+        const csrfToken = csrfTokenMeta.getAttribute('content');
+
+        const actionUrl = form.getAttribute('action');
+
+        fetch(actionUrl, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    openModal('success')
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }
 });

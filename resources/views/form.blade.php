@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <span class="form__fields-field-selector-line"></span>
-                <input type="text" class="form__fields-field-input dropdown-input" placeholder="{{__('form.phone')}}">
+                <input type="text" name="phone" class="form__fields-field-input dropdown-input" placeholder="{{__('form.phone')}}">
             </div>
         </div>
         @endif
