@@ -41,7 +41,30 @@
         opacity: 0.8;
     }
 
+    &--add {
+        background-color: var(--add);
+    }
+
     &--delete {
         background-color: var(--delete);
+    }
+}
+
+.input {
+    height: 30px;
+    width: 100%;
+    padding: 0 10px;
+    border: 1px solid var(--primary_background);
+    border-radius: 3px;
+}
+
+.input-check {
+    height: 20px;
+    width: 20px;
+    border: 1px solid var(--primary_background);
+    border-radius: 3px;
+    
+    &:hover {
+        cursor: pointer;
     }
 }
