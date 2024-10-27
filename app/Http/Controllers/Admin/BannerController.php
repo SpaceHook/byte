@@ -10,7 +10,7 @@ class BannerController extends Controller
 {
     public function index()
     {
-        $banners = Banner::all();
+        $banners = Banner::all()->reverse();
         return view('admin.banners.index', compact('banners'));
     }
 

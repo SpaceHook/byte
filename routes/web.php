@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\InfoController;
 use App\Http\Controllers\Admin\FormSubmissionController;
+use App\Http\Controllers\Admin\SeoController;
 use App\Http\Middleware\LocaleMiddleware;
 use App\Http\Controllers\FormController;
 
@@ -30,6 +31,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::resource('courses', CourseController::class);
     Route::resource('info', InfoController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::resource('submissions', FormSubmissionController::class)->only(['index', 'destroy']);
+    Route::resource('seo', SeoController::class);
 });
 
 Route::middleware('auth')->group(function () {

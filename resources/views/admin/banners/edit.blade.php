@@ -1,35 +1,51 @@
 @extends('layouts.admin')
 
-@section('content')
-<h1>Редагування банера</h1>
+@vite(['resources/css/admin/edit.scss', 'resources/js/admin/index.js'])
 
-<form action="{{ route('admin.banners.update', $banner->id) }}" method="POST" enctype="multipart/form-data">
+@section('content')
+<form action="{{ route('admin.banners.update', $banner->id) }}" method="POST" enctype="multipart/form-data" class="edit">
+    <div class="admin__section-header">
+        <h1 class="title">Редагування банера</h1>
+
+        <button type="submit" class="button button-action--add">Оновити банер</button>
+    </div>
+
     @csrf
     @method('PUT')
 
-    <div>
-        <label for="title">Заголовок:</label>
-        <input type="text" name="title" id="title" value="{{ old('title', $banner->title) }}">
-    </div>
+    <div class="edit__content">
+        <div class="edit__option">
+            <div class="edit__option-content edit__option-old">
+                @if($banner->image)
+                    <span class="edit__option-name">Поточне зображення</span>
+                    <img src="{{ asset('storage/' . $banner->image) }}" alt="Зображення банера" class="edit__option-image">
+                @endif
+            </div>
+            <div class="edit__option-content edit__option-new">
+                <div class="edit__option-content-header">
+                    <span class="edit__option-name">Нове зображення</span>
+                    <input type="file" name="image" id="image" onchange="previewImage(this, 'image-preview')">
+                </div>
+                <img id="image-preview" src="" alt="" class="edit__option-preview">
+            </div>
+        </div>
 
-    <div>
-        <label for="image">Основне зображення (оновіть, якщо потрібно):</label>
-        <input type="file" name="image" id="image">
-        @if($banner->image)
-        <p>Поточне зображення:</p>
-        <img src="{{ asset('storage/' . $banner->image) }}" alt="Зображення банера" width="200">
-        @endif
-    </div>
+        <div class="edit__option">
+            <div class="edit__option-content edit__option-old">
+                @if($banner->image_mob)
+                    <span class="edit__option-name">Поточне зображення(моб.)</span>
+                    <img src="{{ asset('storage/' . $banner->image_mob) }}" alt="Мобільне зображення банера" class="edit__option-image">
+                @endif
+            </div>
 
-    <div>
-        <label for="image_mob">Мобільне зображення (оновіть, якщо потрібно):</label>
-        <input type="file" name="image_mob" id="image_mob">
-        @if($banner->image_mob)
-        <p>Поточне мобільне зображення:</p>
-        <img src="{{ asset('storage/' . $banner->image_mob) }}" alt="Мобільне зображення банера" width="200">
-        @endif
+            <div class="edit__option-content edit__option-new">
+                <div class="edit__option-content-header">
+                    <span class="edit__option-name">Нове зображення(моб.)</span>
+                    <input type="file" name="image_mob" id="image_mob" onchange="previewImage(this, 'image_mob-preview')">
+                </div>
+                 <img id="image_mob-preview" src="" alt="" class="edit__option-preview">
+            </div>
+        </div>
     </div>
-
-    <button type="submit">Оновити банер</button>
 </form>
 @endsection

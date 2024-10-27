@@ -1,0 +1,48 @@
+.edit {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: max-content;
+    }
+
+    &__option {
+        display: grid;
+        grid-template-columns: 300px max-content;
+        gap: 30px;
+
+        &-name {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        &-image {
+            max-width: 100%;
+            max-height: 300px;
+            height: auto;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+
+        &-preview {
+            display:none;
+            max-width: 100%;
+            max-height: 300px;
+            height: auto;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            &-header {
+                display: flex;
+                gap: 30px;
+            }
+        }
+    }
+
+}

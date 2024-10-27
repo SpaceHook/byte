@@ -1,9 +1,9 @@
 window.previewImage = (input, previewId) => {
     const file = input.files[0];
     const reader = new FileReader();
+    const preview = document.getElementById(previewId);
 
     reader.onload = function(e) {
-        const preview = document.getElementById(previewId);
         preview.src = e.target.result;
         preview.style.display = 'block';
     }

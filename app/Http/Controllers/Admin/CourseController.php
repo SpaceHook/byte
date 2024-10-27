@@ -10,7 +10,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::all()->reverse();
         return view('admin.courses.index', compact('courses'));
     }
 
@@ -22,14 +22,14 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $request->merge([
-        'is_free' => $request->has('is_free') ? true : false,
+            'is_free' => $request->has('is_free') ? true : false,
         ]);
 
         $request->validate([
-        'title' => 'required|string|max:255',
-        'age_group' => 'required|string',
-        'image' => 'required|image|max:2048',
-        'is_free' => 'boolean',
+            'title' => 'required|string|max:255',
+            'age_group' => 'required|string',
+            'image' => 'required|image|max:2048',
+            'is_free' => 'boolean',
         ]);
 
         $course = new Course();

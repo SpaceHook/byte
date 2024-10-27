@@ -18,5 +18,8 @@
         <a href="{{ route('admin.submissions.index') }}" class="menu__links-link">
             Клієнти
         </a>
+        <a href="{{ route('admin.seo.index') }}" class="menu__links-link">
+            SEO-текст
+        </a>
     </div>
 </div>

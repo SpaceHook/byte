@@ -26,6 +26,8 @@ export default defineConfig({
                 '@resources/css/admin/info.scss',
                 '@resources/css/admin/submissions.scss',
                 '@resources/css/admin/create.scss',
+                '@resources/css/admin/edit.scss',
+                '@resources/css/admin/seo.scss',
             ],
             refresh: true,
         }),

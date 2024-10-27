@@ -10,7 +10,7 @@ class InfoController extends Controller
 {
     public function index()
     {
-        $infos = Info::all();
+        $infos = Info::all()->reverse();
         return view('admin.info.index', compact('infos'));
     }
 
