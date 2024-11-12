@@ -7,6 +7,7 @@ export default defineConfig({
         laravel({
             input: [
                 '@resources/css/app.scss',
+                '@resources/css/form.scss',
                 '@resources/js/app.js',
                 '@resources/js/banner_section.js',
                 '@resources/js/countdown.js',
@@ -20,6 +21,7 @@ export default defineConfig({
                 '@resources/css/main_page/contact_section.scss',
                 '@resources/css/main_page/question_section.scss',
                 '@resources/css/admin/index.scss',
+                '@resources/css/admin/banners.scss',
                 '@resources/css/admin/menu.scss',
                 '@resources/css/admin/courses.scss',
                 '@resources/css/admin/info.scss',
