@@ -16,10 +16,10 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-         if (Auth::check() && Auth::user()->role === 'admin') { // Замініть "role" на ваше поле
-            return $next($request);
+         if ($request->route()->getName() === 'admin.register' && (!Auth::check() || Auth::user()->role !== 'admin')) {
+            abort(403, 'Access denied');
         }
 
-        abort(403, 'Access denied');
+        return $next($request);
     }
 }
