@@ -16,11 +16,10 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        // Перевірка, чи користувач залогінений і має роль "admin"
-        if (!Auth::check() || Auth::user()->role !== 'admin') {
-            return redirect('/login'); // Перенаправляє на сторінку логіну, якщо користувач не адміністратор
+         if (Auth::check() && Auth::user()->role === 'admin') { // Замініть "role" на ваше поле
+            return $next($request);
         }
 
-        return $next($request);
+        abort(403, 'Access denied');
     }
 }

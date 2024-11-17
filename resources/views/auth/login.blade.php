@@ -38,12 +38,6 @@
         </label>
 
         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
             <button class="button">
                 {{ __('Log in') }}
             </button>

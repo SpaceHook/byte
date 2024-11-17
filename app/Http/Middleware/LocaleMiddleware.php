@@ -11,8 +11,8 @@ class LocaleMiddleware
     {
         $locale = $request->segment(1);
 
-        if (!in_array($locale, ['sk', 'uk', 'ru'])) {
-            return redirect()->to('/uk' . $request->getRequestUri());
+        if (!in_array($locale, ['sk', 'ua', 'ru'])) {
+            return redirect()->to('/ua' . $request->getRequestUri());
         }
 
         App::setLocale($locale);

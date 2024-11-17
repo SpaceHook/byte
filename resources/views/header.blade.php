@@ -54,7 +54,7 @@
             </div>
 
             <div class="header__language-dropdown">
-                <a href="{{ url('/uk') }}" class="header__language-dropdown-lang">UA</a>
+                <a href="{{ url('/ua') }}" class="header__language-dropdown-lang">UA</a>
                 <a href="{{ url('/sk') }}" class="header__language-dropdown-lang">SK</a>
                 <a href="{{ url('/ru') }}" class="header__language-dropdown-lang">RU</a>
             </div>
@@ -79,7 +79,7 @@
             </div>
 
             <div class="header__burger-menu-languages">
-                <a href="{{ url('/uk') }}" class="header__burger-menu-languages-lang">
+                <a href="{{ url('/ua') }}" class="header__burger-menu-languages-lang">
                     UA
                 </a>
                 <a href="{{ url('/sk') }}" class="header__burger-menu-languages-lang">
