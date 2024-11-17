@@ -29,6 +29,7 @@ export default defineConfig({
                 '@resources/css/admin/create.scss',
                 '@resources/css/admin/edit.scss',
                 '@resources/css/admin/seo.scss',
+                '@resources/css/admin/auth.scss',
             ],
             refresh: true,
         }),

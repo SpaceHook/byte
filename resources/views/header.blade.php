@@ -90,7 +90,7 @@
                 </a>
             </div>
 
-            <button class="header__burger-menu-button default-button">
+            <button class="header__burger-menu-button default-button" onclick="openModal('lesson')">
                 @lang('buttons.button_1')
             </button>
         </div>
