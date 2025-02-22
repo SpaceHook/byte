@@ -1,0 +1,68 @@
+.course {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    overflow: hidden;
+
+    @include onDesktop {
+        padding-top: 60px;
+    }
+
+    &__gift {
+        display: none;
+
+        @include onDesktop {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: block;
+            width: 182px;
+            height: 182px;
+            background: transparent;
+            animation: giftAnimation 3000ms infinite reverse linear;
+            z-index: 2;
+        }
+
+        &-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes giftAnimation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    }
+
+    &__form {
+        margin-bottom: 60px;
+
+        @include onDesktop {
+            margin-bottom: 140px;
+        }
+    }
+
+    &__news {
+        margin-bottom: 56px;
+
+        @include onDesktop {
+            margin-bottom: 140px;
+        }
+    }
+
+    &__contact {
+        margin-bottom: 300px;
+        scroll-margin-top: 60px;
+
+        @include onDesktop {
+            margin-bottom: 140px;
+        }
+    }
+}
