@@ -1,5 +1,10 @@
+@php
+    $currentRouteName = Route::currentRouteName();
+    $currentRouteParams = request()->route()->parameters();
+@endphp
+
 <div class="header__content container">
-    <a href="/" class="header__logo">
+    <a href="{{route('main_page.index', ['locale' => app()->getLocale()])}}" class="header__logo">
         <img
             src="/media/icons/byte_logo.svg"
             alt=""
@@ -54,9 +59,9 @@
             </div>
 
             <div class="header__language-dropdown">
-                <a href="{{ url('/ua') }}" class="header__language-dropdown-lang">UA</a>
-                <a href="{{ url('/sk') }}" class="header__language-dropdown-lang">SK</a>
-                <a href="{{ url('/ru') }}" class="header__language-dropdown-lang">RU</a>
+                <a href="{{ route($currentRouteName, array_merge($currentRouteParams, ['locale' => 'ua'])) }}" class="header__language-dropdown-lang">UA</a>
+                <a href="{{ route($currentRouteName, array_merge($currentRouteParams, ['locale' => 'sk'])) }}" class="header__language-dropdown-lang">SK</a>
+                <a href="{{ route($currentRouteName, array_merge($currentRouteParams, ['locale' => 'ru'])) }}" class="header__language-dropdown-lang">RU</a>
             </div>
         </div>
 

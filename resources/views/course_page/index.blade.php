@@ -8,8 +8,16 @@
         <img src="/media/images/big_gift.png" alt="" class="course__gift-image">
     </button>
 
-    <section class="course__form main-section">
+    <section class="course__main main-section">
         @include('course_page.main_section.index')
+    </section>
+
+    <section class="course__about about-section">
+        @include('course_page.about_section.index')
+    </section>
+
+    <section class="course__gallery gallery-section">
+        @include('course_page.gallery_section.index')
     </section>
 
     <section class="course__form form-section">

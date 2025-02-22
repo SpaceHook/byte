@@ -1,0 +1,63 @@
+.about-section {
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    max-width: 1001px;
+
+    @include onDesktop {
+      gap: 180px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+
+    &-title {
+      font-size: 32px;
+      line-height: 40px;
+      font-weight: 400;
+      width: 100%;
+
+      @include onDesktop {
+        max-width: 268px;
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      width: 100%;
+    }
+
+    &-options {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include onDesktop {
+        gap: 48px;
+      }
+
+      &-option {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &-title {
+          font-size: 16px;
+          line-height: 24px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

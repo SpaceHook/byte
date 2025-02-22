@@ -8,6 +8,30 @@
         padding-top: 60px;
     }
 
+    &__main {
+        margin-bottom: 50px;
+
+        @include onDesktop {
+            margin-bottom: 200px;
+        }
+    }
+
+    &__about {
+        margin-bottom: 100px;
+
+        @include onDesktop {
+            margin-bottom: 140px;
+        }
+    }
+
+    &__gallery {
+        margin-bottom: 240px;
+
+        @include onDesktop {
+            margin-bottom: 140px;
+        }
+    }
+
     &__gift {
         display: none;
 

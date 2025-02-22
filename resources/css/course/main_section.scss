@@ -26,11 +26,33 @@
   }
 
   &__info {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 470px;
     padding: 0 16px;
+
+    @include onDesktop {
+      max-width: 470px;
+    }
+
+    &-image {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 53%);
+      width: 100%;
+      max-width: 295px;
+
+      @include onDesktop {
+        top: 0;
+        right: 0;
+        left: initial;
+        bottom: initial;
+        transform: translate(120%, -10%);
+        max-width: none;
+      }
+    }
 
     &-title {
       font-size: 32px;
@@ -77,12 +99,14 @@
   }
 
   &__benefits {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 20px;
     background: linear-gradient(95.61deg, #3F33E8 10.95%, #2897E8 98.61%);
     width: 100%;
     padding: 75px 16px 50px;
+    z-index: 1;
 
     @include onDesktop {
       position: absolute;

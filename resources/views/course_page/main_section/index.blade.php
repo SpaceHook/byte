@@ -1,7 +1,5 @@
 @vite(['resources/css/course/main_section.scss'])
-@php
-dump($course);
-@endphp
+
 <div class="main-section__content container">
     <div class="main-section__breadcrumbs">
         <span class="main-section__breadcrumbs-text">
@@ -10,6 +8,8 @@ dump($course);
     </div>
 
     <div class="main-section__info">
+        <img src="/media/girl.png" alt="" class="main-section__info-image">
+
         <h1 class="main-section__info-title">
             {{$course->title}}
         </h1>
