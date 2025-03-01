@@ -29,6 +29,11 @@ Route::middleware([LocaleMiddleware::class])->group(function () {
     });
 });
 
+Route::get('/dogovor', function () {
+    $filePath = public_path('documents/dogovor.pdf');
+    return response()->file($filePath);
+})->name('dogovor.open');
+
 Route::get('/logout', function () {
     return redirect('/');
 })->name('logout.redirect');

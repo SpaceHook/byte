@@ -81,6 +81,8 @@
                 <button class="header__burger-menu-links-link" onclick="scrollToSection('contacts')">
                     @lang('navigation.contacts')
                 </button>
+
+                <a href="{{route('dogovor.open')}}" target="_blank" class="header__burger-menu-links-link">@lang('navigation.contract')</a>
             </div>
 
             <div class="header__burger-menu-languages">

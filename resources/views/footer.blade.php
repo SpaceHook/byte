@@ -11,6 +11,8 @@
         <button class="footer__links-link" onclick="scrollToSection('contacts')">
             @lang('navigation.contacts')
         </button>
+
+        <a href="{{route('dogovor.open')}}" target="_blank" class="footer__links-link">@lang('navigation.contract')</a>
     </div>
 
     <div class="footer__section footer__section-socials">
