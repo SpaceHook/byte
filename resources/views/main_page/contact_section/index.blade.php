@@ -22,21 +22,14 @@
 
                 <div class="contact-section__info-options-option-items">
                     <div class="contact-section__info-options-option-items-item">
-                        <img src="/media/images/kyivstar.png" alt="" width="32" height="32" class="contact-section__info-options-option-items-item-icon">
-                        <a href="tel:+380675102244" class="contact-section__info-options-option-items-item-text">
-                            +38 (067) 510 22 44
-                        </a>
-                    </div>
-                    <div class="contact-section__info-options-option-items-item">
-                        <img src="/media/images/vodafone.png" alt="" width="32" height="32" class="contact-section__info-options-option-items-item-icon">
-                        <a href="tel:+380995102233" class="contact-section__info-options-option-items-item-text">
-                            +38 (099) 510 22 33
+                        <a href="tel:+421952279887" class="contact-section__info-options-option-items-item-text">
+                            +421 (952) 27 98 87
                         </a>
                     </div>
                     <div class="contact-section__info-options-option-items-item">
                         <img src="/media/icons/mail.svg" alt="" width="32" height="32" class="contact-section__info-options-option-items-item-icon">
-                        <a href="mailto:byte.in.ua@gmail.com" class="contact-section__info-options-option-items-item-text">
-                            byte.in.ua@gmail.com
+                        <a href="mailto:Byte.bratislava@gmail.com" class="contact-section__info-options-option-items-item-text">
+                            Byte.bratislava@gmail.com
                         </a>
                     </div>
                 </div>
@@ -54,7 +47,7 @@
                     <a href="#" target="_blank" class="contact-section__info-options-option-socials-social">
                         <img src="/media/icons/facebook.svg" alt="" width="40" height="40" class="contact-section__info-options-option-socials-social-icon">
                     </a>
-                    <a href="#" target="_blank" class="contact-section__info-options-option-socials-social">
+                    <a href="https://www.instagram.com/it.byte.academy?igsh=MWN0aTc3c3FnM201ag==" target="_blank" class="contact-section__info-options-option-socials-social">
                         <img src="/media/icons/instagram.svg" alt="" width="40" height="40" class="contact-section__info-options-option-socials-social-icon">
                     </a>
                 </div>

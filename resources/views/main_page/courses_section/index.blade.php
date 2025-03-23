@@ -33,9 +33,9 @@
                     </div>
                 @endif
 
-                <button onclick="openModal('consultation')" class="courses-section__cards-card-button default-button">
+                <a href="{{ route('course.show', ['locale' => app()->getLocale(), 'id' => $course->id]) }}" class="courses-section__cards-card-button default-button">
                     @lang('buttons.button_2')
-                </button>
+                </a>
             </div>
         </div>
         @endforeach
