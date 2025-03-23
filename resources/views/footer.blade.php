@@ -21,7 +21,7 @@
         </h5>
 
         <div class="footer__socials">
-            <a href="https://www.instagram.com/it.byte.academy?igsh=MWN0aTc3c3FnM201ag==" class="footer__socials-social">
+            <a href="https://www.instagram.com/it.byte.academy?igsh=MWN0aTc3c3FnM201ag==" target="_blank" class="footer__socials-social">
                 <img src="/media/icons/footer_instagram.svg" alt="" class="footer__socials-social-icon">
             </a>
             <a href="" class="footer__socials-social">

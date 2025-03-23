@@ -27,17 +27,17 @@
         </div>
 
         <div class="header__socials">
-            <a href="#" class="header__socials-social">
+            <a href="https://t.me/+421952279887" target="_blank" class="header__socials-social">
                 <img src="/media/icons/telegram.svg" alt="" class="header__socials-social-icon">
             </a>
-            <a href="#" class="header__socials-social">
+            <a href="https://chats.viber.com/+421952279887" target="_blank"  class="header__socials-social">
                 <img src="/media/icons/viber.svg" alt="" class="header__socials-social-icon">
             </a>
         </div>
 
         <div class="header__contact">
-            <a href="tel:+380675102244" class="header__phone">
-                +38 067 510 22 44
+            <a href="tel:+421952279887" class="header__phone">
+                +421 (952) 27 98 87
             </a>
 
             <button class="header__button default-button" onclick="openModal('lesson')">
