@@ -21,7 +21,7 @@
         </h5>
 
         <div class="footer__socials">
-            <a href="" class="footer__socials-social">
+            <a href="https://www.instagram.com/it.byte.academy?igsh=MWN0aTc3c3FnM201ag==" class="footer__socials-social">
                 <img src="/media/icons/footer_instagram.svg" alt="" class="footer__socials-social-icon">
             </a>
             <a href="" class="footer__socials-social">
@@ -36,11 +36,8 @@
         </h5>
 
         <div class="footer__section-numbers">
-            <a href="tel:+380675102244" class="footer__section-numbers-number">
-                +38 (067) 510 22 44
-            </a>
-            <a href="tel:+380995102233" class="footer__section-numbers-number">
-                +38 (099) 510 22 33
+            <a href="tel:+421952279887" class="footer__section-numbers-number">
+                +421 (952) 27 98 87
             </a>
         </div>
     </div>
