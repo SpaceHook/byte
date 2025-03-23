@@ -44,7 +44,7 @@
                 </h5>
 
                 <div class="contact-section__info-options-option-socials">
-                    <a href="#" target="_blank" class="contact-section__info-options-option-socials-social">
+                    <a href="https://www.facebook.com/share/15ufPhuPY3/?mibextid=wwXIfr" target="_blank" class="contact-section__info-options-option-socials-social">
                         <img src="/media/icons/facebook.svg" alt="" width="40" height="40" class="contact-section__info-options-option-socials-social-icon">
                     </a>
                     <a href="https://www.instagram.com/it.byte.academy?igsh=MWN0aTc3c3FnM201ag==" target="_blank" class="contact-section__info-options-option-socials-social">

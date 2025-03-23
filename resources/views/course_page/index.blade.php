@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
+@section('content')
+
 @vite(['resources/css/course/index.scss'])
 
-@section('content')
 <main class="course">
     <button class="course__gift" onclick="openModal('lesson')">
         <img src="/media/images/big_gift.png" alt="" class="course__gift-image">

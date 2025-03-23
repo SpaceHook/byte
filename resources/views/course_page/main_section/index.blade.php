@@ -1,5 +1,8 @@
 @vite(['resources/css/course/main_section.scss'])
 
+@php
+  $logos = json_decode($course->logos, true) ?? [];
+@endphp
 <div class="main-section__content container">
     <div class="main-section__breadcrumbs">
         <span class="main-section__breadcrumbs-text">
@@ -14,26 +17,27 @@
             {{$course->title}}
         </h1>
         <p class="main-section__info-description">
-            Обучаем логическому мышлению и развиваем творческие способности ребенка в игровой форме
+            {{$course->subtitle}}
         </p>
 
         <button onclick="openModal('consultation')" class="main-section__info-button default-button">
             @lang('buttons.button_2')
         </button>
 
-        <div class="main-section__info-icons">
-            <img src="/media/icons/course/scratch.svg" alt="" class="main-section__info-icons-icon">
-            <img src="/media/icons/course/calligrakrita.svg" alt="" class="main-section__info-icons-icon">
-            <img src="/media/icons/course/tinkercad.svg" alt="" class="main-section__info-icons-icon">
-            <img src="/media/icons/course/youtube.svg" alt="" class="main-section__info-icons-icon">
-        </div>
+        @if(!empty($logos))
+            <div class="main-section__info-icons">
+                @foreach ($logos as $logo)
+                    <img src="{{ asset('storage/' . $logo) }}" alt="" class="main-section__info-icons-icon">
+                @endforeach
+            </div>
+        @endif
     </div>
 
     <div class="main-section__benefits">
         <div class="main-section__benefits-benefit">
             <div class="main-section__benefits-benefit-texts">
                 <span class="main-section__benefits-benefit-title">
-                    6 місяців
+                    {{ $course->period_months }} місяців
                 </span>
                 <span class="main-section__benefits-benefit-description">
                     навчання
@@ -53,7 +57,7 @@
         <div class="main-section__benefits-benefit">
             <div class="main-section__benefits-benefit-texts">
                 <span class="main-section__benefits-benefit-title">
-                    48 занять
+                    {{ $course->lessons_count }} занять
                 </span>
                 <span class="main-section__benefits-benefit-description">
                     в ігровій формі
