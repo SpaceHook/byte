@@ -81,8 +81,7 @@
                     &-text {
                         font-size: 16px;
                         font-weight: 600;
-                        text-transform: uppercase;
-                        color: #8080808C;
+                        color: #000;
                         line-height: 14px;
 
                         &-large {
@@ -95,7 +94,12 @@
 
             &-button {
                 margin-top: auto;
+                margin-bottom: 10px;
                 min-height: 50px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
         }
     }

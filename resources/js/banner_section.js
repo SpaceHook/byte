@@ -9,6 +9,7 @@ const swiper = new Swiper('.banner-section__swiper', {
     autoplay: {
         delay: 5000,
     },
+
     pagination: {
         el: '.swiper-pagination',
     },
@@ -17,4 +18,6 @@ const swiper = new Swiper('.banner-section__swiper', {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
+
+    spaceBetween: 20,
 });

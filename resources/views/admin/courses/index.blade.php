@@ -27,7 +27,7 @@
         </span>
 
         <input type="checkbox" @if($course->is_free) checked @endif disabled class="courses__text"/>
-        <img src="{{ asset('storage/' . $course->image) }}" alt="Банер" class="courses__image">
+        <img src="{{ asset('storage/' . $course->banner_image) }}" alt="Банер" class="courses__image">
 
         <div class="courses__actions">
             <a href="{{ route('admin.courses.edit', $course->id) }}" class="button-action">
