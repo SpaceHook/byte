@@ -4,9 +4,12 @@
 
 @section('content')
     <main class="main">
-        <button class="main__gift" onclick="openModal('lesson')">
-            <img src="/media/images/big_gift.png" alt="" class="main__gift-image">
-        </button>
+        <div class="main__gift-container container">
+            <button class="main__gift" onclick="openModal('lesson')">
+                <img src="/media/images/big_gift.png" alt="" class="main__gift-image">
+            </button>
+        </div>
+
         <section class="main__banner banner-section">
             @include('main_page.banner_section.index')
         </section>

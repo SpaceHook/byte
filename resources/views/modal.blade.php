@@ -24,8 +24,8 @@
 
                 <div class="modal__contact-phone">
                     <img src="/media/icons/phone.svg" alt="" width="24" height="24" class="modal__contact-phone-icon">
-                    <a href="tel:0675102244" class="modal__contact-phone-text">
-                        (067) 510 22 44
+                    <a href="tel:+421952279887" class="modal__contact-phone-text">
+                        +421 (952) 27 98 87
                     </a>
                 </div>
             </div>
@@ -56,8 +56,8 @@
 
                 <div class="modal__contact-phone">
                     <img src="/media/icons/phone.svg" alt="" width="24" height="24" class="modal__contact-phone-icon">
-                    <a href="tel:0675102244" class="modal__contact-phone-text">
-                        (067) 510 22 44
+                    <a href="tel:+421952279887" class="modal__contact-phone-text">
+                        +421 (952) 27 98 87
                     </a>
                 </div>
             </div>

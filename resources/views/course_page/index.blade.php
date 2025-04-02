@@ -5,9 +5,11 @@
 @vite(['resources/css/course/index.scss'])
 
 <main class="course">
-    <button class="course__gift" onclick="openModal('lesson')">
-        <img src="/media/images/big_gift.png" alt="" class="course__gift-image">
-    </button>
+    <div class="course__gift-container container">
+        <button class="course__gift" onclick="openModal('lesson')">
+            <img src="/media/images/big_gift.png" alt="" class="course__gift-image">
+        </button>
+    </div>
 
     <section class="course__main main-section">
         @include('course_page.main_section.index')
