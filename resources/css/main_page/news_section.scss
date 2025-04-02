@@ -21,6 +21,7 @@
         display: grid;
         grid-template-rows: 348px 228px 249px 295px 220px 365px 348px 249px;
         gap: 15px;
+        width: 100%;
 
         @include onDesktop {
             grid-template-columns: 1fr 1.074fr 1fr 1.074fr;

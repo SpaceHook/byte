@@ -4,76 +4,90 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Info;
+use App\Models\InfoTranslation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class InfoController extends Controller
 {
     public function index()
     {
-        $infos = Info::all()->reverse();
-        return view('admin.info.index', compact('infos'));
-    }
+        $infos = Info::with('translations')->latest()->get();
+return view('admin.info.index', compact('infos'));
+}
 
-    public function create()
-    {
-        return view('admin.info.create');
-    }
+public function create()
+{
+return view('admin.info.create');
+}
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'required|image|max:2048',
-        ]);
+public function store(Request $request)
+{
+$request->validate([
+'image' => 'required|image|max:2048',
+'title' => 'required|array',
+'title.*' => 'required|string|max:255',
+]);
 
-        $info = new Info();
-        $info->title = $request->title;
+$info = new Info();
 
-        if ($request->hasFile('image')) {
-            $info->image = $request->file('image')->store('info', 'public');
-        }
+if ($request->hasFile('image')) {
+$info->image = $request->file('image')->store('info', 'public');
+}
 
-        $info->save();
+$info->save();
 
-        return redirect()->route('admin.info.index')->with('success', 'Інформація успішно додана');
-    }
+foreach (['ua', 'ru', 'sk'] as $locale) {
+$info->translations()->create([
+'locale' => $locale,
+'title' => $request->input("title.$locale"),
+]);
+}
 
-    public function destroy($id)
-    {
-        $info = Info::findOrFail($id);
-        if ($info->image) {
-            \Storage::disk('public')->delete($info->image);
-        }
-        $info->delete();
+return redirect()->route('admin.info.index')->with('success', 'Інформація успішно додана');
+}
 
-        return redirect()->route('admin.info.index')->with('success', 'Інформація успішно видалена');
-    }
-    public function edit(Info $info)
-    {
-        return view('admin.info.edit', compact('info'));
-    }
+public function edit(Info $info)
+{
+$info->load('translations');
+return view('admin.info.edit', compact('info'));
+}
 
-    public function update(Request $request, Info $info)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'nullable|image|max:2048',
-        ]);
+public function update(Request $request, Info $info)
+{
+$request->validate([
+'image' => 'nullable|image|max:2048',
+'title' => 'required|array',
+'title.*' => 'required|string|max:255',
+]);
 
-        $info->title = $request->title;
+if ($request->hasFile('image')) {
+if ($info->image) {
+Storage::disk('public')->delete($info->image);
+}
+$info->image = $request->file('image')->store('info', 'public');
+}
 
-        if ($request->hasFile('image')) {
-            // Видаляємо старе зображення
-            if ($info->image) {
-            \Storage::disk('public')->delete($info->image);
-            }
+$info->save();
 
-            // Зберігаємо нове зображення
-            $info->image = $request->file('image')->store('info', 'public');
-        }
+foreach (['ua', 'ru', 'sk'] as $locale) {
+$info->translations()->updateOrCreate(
+['locale' => $locale],
+['title' => $request->input("title.$locale")]
+);
+}
 
-        $info->save();
+return redirect()->route('admin.info.index')->with('success', 'Інформація успішно оновлена');
+}
 
-        return redirect()->route('admin.info.index')->with('success', 'Інформація успішно оновлена');
-    }
+public function destroy($id)
+{
+$info = Info::findOrFail($id);
+if ($info->image) {
+Storage::disk('public')->delete($info->image);
+}
+$info->delete();
+
+return redirect()->route('admin.info.index')->with('success', 'Інформація успішно видалена');
+}
 }
