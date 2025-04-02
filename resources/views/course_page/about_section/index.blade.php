@@ -1,7 +1,7 @@
 @vite(['resources/css/course/about_section.scss'])
 
 @php
-    $skills = json_decode($course->skills, true) ?? [];
+    $skills = json_decode($course->translation()?->skills, true) ?? [];
 @endphp
 
 <div class="about-section__content container">
@@ -11,7 +11,7 @@
         </span>
 
         <p class="about-section__block-text">
-            {{ $course->about_text }}
+            {{ $course->translation()?->about_text }}
         </p>
     </div>
 

@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
+    protected array $locales = ['ua', 'ru', 'sk'];
+
     public function index()
     {
-        $courses = Course::latest()->get(); // Використовуємо latest() для сортування
+        $courses = Course::latest()->get();
 return view('admin.courses.index', compact('courses'));
 }
 
@@ -22,89 +24,96 @@ return view('admin.courses.create');
 
 public function store(Request $request)
 {
-$request->validate([
-'title' => 'required|string|max:255',
-'subtitle' => 'nullable|string|max:500',
-'age_group' => 'required|string',
-'banner_image' => 'nullable|image|max:2048', // Тут замінили image на banner_image
-'person' => 'nullable|string|max:255',
-'logos' => 'nullable|array',
-'logos.*' => 'image|max:1024',
-'period_months' => 'required|integer|min:1',
-'lessons_count' => 'required|integer|min:1',
-'about_text' => 'nullable|string',
-'skills' => 'nullable|array',
-'skills.*.title' => 'required|string|max:255',
-'skills.*.description' => 'required|string|max:1000',
-]);
+$this->validateRequest($request);
 
 $course = new Course();
-$course->title = $request->title;
-$course->subtitle = $request->subtitle;
-$course->age_group = $request->age_group;
-$course->person = $request->person;
-$course->period_months = $request->period_months;
-$course->lessons_count = $request->lessons_count;
-$course->about_text = $request->about_text;
-
-// Завантаження `banner_image`
-if ($request->hasFile('banner_image')) {
-$course->banner_image = $request->file('banner_image')->store('courses/banners', 'public');
-}
-
-// Обробка масиву навичок
-if ($request->has('skills')) {
-$course->skills = json_encode($request->skills);
-}
-
-// Обробка логотипів
-if ($request->hasFile('logos')) {
-$logos = [];
-foreach ($request->file('logos') as $logo) {
-$logos[] = $logo->store('courses/logos', 'public');
-}
-$course->logos = json_encode($logos);
-}
-
+$this->fillBaseFields($course, $request);
 $course->save();
+
+$this->saveTranslations($course, $request);
 
 return redirect()->route('admin.courses.index')->with('success', 'Курс успішно додано');
 }
 
-
-
 public function edit(Course $course)
 {
+$course->load('translations');
 return view('admin.courses.edit', compact('course'));
 }
 
 public function update(Request $request, Course $course)
 {
+$this->validateRequest($request);
+
+$this->fillBaseFields($course, $request);
+$course->save();
+
+$this->saveTranslations($course, $request);
+
+return redirect()->route('admin.courses.index')->with('success', 'Курс успішно оновлено');
+}
+
+public function destroy(Course $course)
+{
+if ($course->banner_image) {
+Storage::disk('public')->delete($course->banner_image);
+}
+
+if ($course->person) {
+Storage::disk('public')->delete($course->person);
+}
+
+if ($course->logos) {
+foreach (json_decode($course->logos, true) as $logo) {
+Storage::disk('public')->delete($logo);
+}
+}
+
+$course->delete();
+
+return redirect()->route('admin.courses.index')->with('success', 'Курс успішно видалено');
+}
+
+// ----------------------------
+
+private function validateRequest(Request $request)
+{
 $request->validate([
-'title' => 'required|string|max:255',
-'subtitle' => 'nullable|string|max:500',
-'age_group' => 'required|string',
-'banner_image' => 'nullable|image|max:2048', // Тут замінили image на banner_image
-'person' => 'nullable|string|max:255',
+'title' => 'required|array',
+'title.*' => 'required|string|max:255',
+
+'subtitle' => 'nullable|array',
+'subtitle.*' => 'nullable|string|max:500',
+
+'about_text' => 'nullable|array',
+'about_text.*' => 'nullable|string',
+
+'age_group' => 'required|array',
+'age_group.*' => 'required|string|max:255',
+
+'skills' => 'nullable|array',
+'skills.*' => 'nullable|array',
+'skills.*.*.title' => 'required|string|max:255',
+'skills.*.*.description' => 'required|string|max:1000',
+
+'price' => 'nullable|numeric|min:0',
+
+'banner_image' => 'nullable|image|max:2048',
+'person' => 'nullable|image|max:2048',
 'logos' => 'nullable|array',
 'logos.*' => 'image|max:1024',
+
 'period_months' => 'required|integer|min:1',
 'lessons_count' => 'required|integer|min:1',
-'about_text' => 'nullable|string',
-'skills' => 'nullable|array',
-'skills.*.title' => 'required|string|max:255',
-'skills.*.description' => 'required|string|max:1000',
 ]);
+}
 
-$course->title = $request->title;
-$course->subtitle = $request->subtitle;
-$course->age_group = $request->age_group;
-$course->person = $request->person;
+private function fillBaseFields(Course $course, Request $request)
+{
 $course->period_months = $request->period_months;
 $course->lessons_count = $request->lessons_count;
-$course->about_text = $request->about_text;
+$course->price = $request->price;
 
-// Оновлення `banner_image`
 if ($request->hasFile('banner_image')) {
 if ($course->banner_image) {
 Storage::disk('public')->delete($course->banner_image);
@@ -112,12 +121,13 @@ Storage::disk('public')->delete($course->banner_image);
 $course->banner_image = $request->file('banner_image')->store('courses/banners', 'public');
 }
 
-// Оновлення масиву навичок
-if ($request->has('skills')) {
-$course->skills = json_encode($request->skills);
+if ($request->hasFile('person')) {
+if ($course->person) {
+Storage::disk('public')->delete($course->person);
+}
+$course->person = $request->file('person')->store('courses/persons', 'public');
 }
 
-// Оновлення логотипів
 if ($request->hasFile('logos')) {
 if ($course->logos) {
 foreach (json_decode($course->logos, true) as $logo) {
@@ -131,29 +141,21 @@ $logos[] = $logo->store('courses/logos', 'public');
 }
 $course->logos = json_encode($logos);
 }
+        }
 
-$course->save();
-
-return redirect()->route('admin.courses.index')->with('success', 'Курс успішно оновлено');
-}
-
-
-public function destroy(Course $course)
+private function saveTranslations(Course $course, Request $request)
 {
-// Видалення банерного зображення
-if ($course->banner_image) {
-Storage::disk('public')->delete($course->banner_image);
+foreach ($this->locales as $locale) {
+$course->translations()->updateOrCreate(
+['locale' => $locale],
+[
+'title' => $request->input("title.$locale"),
+'subtitle' => $request->input("subtitle.$locale"),
+'about_text' => $request->input("about_text.$locale"),
+'skills' => json_encode($request->input("skills.$locale") ?? []),
+'age_group' => $request->input("age_group.$locale"),
+]
+);
 }
-
-// Видалення логотипів
-if ($course->logos) {
-foreach (json_decode($course->logos, true) as $logo) {
-Storage::disk('public')->delete($logo);
-}
-}
-
-$course->delete();
-
-return redirect()->route('admin.courses.index')->with('success', 'Курс успішно видалено');
-}
+        }
 }

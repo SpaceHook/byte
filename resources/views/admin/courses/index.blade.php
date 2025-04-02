@@ -11,22 +11,32 @@
 <div class="courses">
     <span class="courses__title">ID</span>
     <span class="courses__title">Назва</span>
+    <span class="courses__title">Ціна</span>
     <span class="courses__title">Вікова група</span>
-    <span class="courses__title">Безкоштовний урок</span>
-    <span class="courses__title">Картинка</span>
+    <span class="courses__title">Період навчання(міс.)</span>
+    <span class="courses__title">К-сть занять</span>
+    <span class="courses__title">Банер</span>
     <span class="courses__title">Дії</span>
     @foreach ($courses as $course)
         <span class="courses__text">
             {{$course->id}}
         </span>
         <span class="courses__text">
-            {{$course->title}}
+            {{$course->translation('ua')?->title}}
         </span>
         <span class="courses__text">
-            {{$course->age_group}}
+            {{$course->price}}€
+        </span>
+        <span class="courses__text">
+            {{$course->translation('ua')?->age_group}}
+        </span>
+        <span class="courses__text">
+            {{$course->period_months}}
+        </span>
+        <span class="courses__text">
+            {{$course->lessons_count}}
         </span>
 
-        <input type="checkbox" @if($course->is_free) checked @endif disabled class="courses__text"/>
         <img src="{{ asset('storage/' . $course->banner_image) }}" alt="Банер" class="courses__image">
 
         <div class="courses__actions">

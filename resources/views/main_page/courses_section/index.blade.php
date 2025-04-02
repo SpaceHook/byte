@@ -12,17 +12,17 @@
 
             <div class="courses-section__cards-card-content">
                 <span class="courses-section__cards-card-tag">
-                    {{ $course->age_group }}
+                    {{ $course->translation()?->age_group }}
                 </span>
 
                 <h2 class="courses-section__cards-card-title">
-                    {{ $course->title }}
+                    {{ $course->translation()?->title }}
                 </h2>
 
                 <div class="courses-section__cards-card-gift">
                     <div class="courses-section__cards-card-gift-info">
                         <span class="courses-section__cards-card-gift-info-text">
-                            99€ / 8 занять
+                            {{  rtrim(rtrim($course->price, '0'), '.') }}€ / {{  trans_choice('course_page.lessons_count', 8, ['count' => 8]) }}
                         </span>
                     </div>
                 </div>

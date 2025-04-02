@@ -6,7 +6,7 @@
 <div class="main-section__content container">
     <div class="main-section__breadcrumbs">
         <span class="main-section__breadcrumbs-text">
-            {{$course->title}}
+            {{ $course->translation()?->title }}
         </span>
     </div>
 
@@ -14,10 +14,10 @@
         <img src="/media/girl.png" alt="" class="main-section__info-image">
 
         <h1 class="main-section__info-title">
-            {{$course->title}}
+            {{ $course->translation()?->title }}
         </h1>
         <p class="main-section__info-description">
-            {{$course->subtitle}}
+            {{ $course->translation()?->subtitle }}
         </p>
 
         <button onclick="openModal('consultation')" class="main-section__info-button default-button">
@@ -37,30 +37,30 @@
         <div class="main-section__benefits-benefit">
             <div class="main-section__benefits-benefit-texts">
                 <span class="main-section__benefits-benefit-title">
-                    {{ $course->period_months }} місяців
+                    {{  trans_choice('course_page.duration_months', $course->period_months, ['count' => $course->period_months]) }}
                 </span>
                 <span class="main-section__benefits-benefit-description">
-                    навчання
+                    @lang('course_page.education')
                 </span>
             </div>
         </div>
         <div class="main-section__benefits-benefit">
             <div class="main-section__benefits-benefit-texts">
                 <span class="main-section__benefits-benefit-title">
-                    сертифікат
+                    @lang('course_page.certificate')
                 </span>
                 <span class="main-section__benefits-benefit-description">
-                    після закінчення навчання
+                    @lang('course_page.graduation')
                 </span>
             </div>
         </div>
         <div class="main-section__benefits-benefit">
             <div class="main-section__benefits-benefit-texts">
                 <span class="main-section__benefits-benefit-title">
-                    {{ $course->lessons_count }} занять
+                    {{  trans_choice('course_page.lessons_count', $course->lessons_count, ['count' => $course->lessons_count]) }}
                 </span>
                 <span class="main-section__benefits-benefit-description">
-                    в ігровій формі
+                    @lang('course_page.playful')
                 </span>
             </div>
         </div>
