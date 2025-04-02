@@ -6,17 +6,19 @@
 <form action="{{ route('admin.info.store') }}" method="POST" enctype="multipart/form-data" class="create">
     <div class="admin__section-header">
         <h1 class="title">Додати інформацію</h1>
-
         <button type="submit" class="button button-action--add">Додати інформацію</button>
     </div>
 
     @csrf
 
     <div class="create__content">
-        <div class="create__option">
-            <span class="create__option-name">Заголовок</span>
-            <input type="text" name="title" required class="input">
-        </div>
+        @foreach(['ua', 'ru', 'sk'] as $locale)
+            <div class="create__option">
+                <span class="create__option-name">Заголовок ({{ strtoupper($locale) }})</span>
+                <input type="text" name="title[{{ $locale }}]" required class="input"
+                       value="{{ old("title.$locale") }}">
+            </div>
+        @endforeach
 
         <div class="create__option">
             <span class="create__option-name">Зображення</span>

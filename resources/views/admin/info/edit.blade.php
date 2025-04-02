@@ -15,18 +15,21 @@
     @method('PUT')
 
     <div class="edit__content">
+        @foreach(['ua', 'ru', 'sk'] as $locale)
         <div class="edit__option">
-            <div class="edit__option-content edit__option-old">
-                <span class="edit__option-name">Заголовок</span>
-                <input type="text" name="title" value="{{ $info->title }}" class="input" required>
+            <div class="edit__option-content">
+                <span class="edit__option-name">Заголовок ({{ strtoupper($locale) }})</span>
+                <input type="text" name="title[{{ $locale }}]" required class="input"
+                       value="{{ old("title.$locale", $info->translation($locale)?->title) }}">
             </div>
         </div>
+        @endforeach
 
         <div class="edit__option">
             <div class="edit__option-content edit__option-old">
                 @if($info->image)
-                    <span class="edit__option-name">Поточне зображення</span>
-                    <img src="{{ asset('storage/' . $info->image) }}" alt="Зображення курсу" class="edit__option-image">
+                <span class="edit__option-name">Поточне зображення</span>
+                <img src="{{ asset('storage/' . $info->image) }}" alt="Зображення" class="edit__option-image">
                 @endif
             </div>
 
@@ -38,6 +41,7 @@
                 <img id="image-preview" src="" alt="" class="edit__option-preview">
             </div>
         </div>
+
     </div>
 
 </form>
