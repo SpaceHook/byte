@@ -6,8 +6,8 @@
             @foreach ($banners as $banner)
                 <div class="swiper-slide banner-section__swiper-slide">
                     <picture>
-                        <source srcset="{{ asset('storage/' . $banner->image_mob) }}" media="(max-width: 768px)" />
-                        <img src="{{ asset('storage/' . $banner->image) }}" alt="" class="banner-section__swiper-slide-image">
+                        <source srcset="{{ asset('storage/' . $banner->translation()?->image_mob) }}" media="(max-width: 768px)" />
+                        <img src="{{ asset('storage/' . $banner->translation()?->image) }}" alt="" class="banner-section__swiper-slide-image">
                     </picture>
                 </div>
             @endforeach

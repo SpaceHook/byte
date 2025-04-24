@@ -21,27 +21,25 @@ class BannerController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'image' => 'required|image|max:2048',
-            'image_mob' => 'nullable|image|max:2048', // Додаємо валідацію для мобільного зображення
-        ]);
+    $request->validate([
+    'translations.*.image' => 'required|image|max:2048',
+    'translations.*.image_mob' => 'nullable|image|max:2048',
+    ]);
 
-        $banner = new Banner();
+    $banner = Banner::create();
 
-        // Збереження основного зображення
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('banners', 'public');
-            $banner->image = $request->file('image')->store('banners', 'public');
-        }
+    foreach (['ua', 'sk', 'ru'] as $locale) {
+    $image = $request->file("translations.$locale.image")?->store("banners/$locale", 'public');
+    $imageMob = $request->file("translations.$locale.image_mob")?->store("banners/$locale/mobile", 'public');
 
-        // Збереження мобільного зображення
-        if ($request->hasFile('image_mob')) {
-            $banner->image_mob = $request->file('image_mob')->store('banners/mobile', 'public');
-        }
+    $banner->translations()->create([
+    'locale' => $locale,
+    'image' => $image,
+    'image_mob' => $imageMob,
+    ]);
+    }
 
-        $banner->save();
-
-        return redirect()->route('admin.banners.index')->with('success', 'Банер успішно додано');
+    return redirect()->route('admin.banners.index')->with('success', 'Банер успішно додано');
     }
 
     public function destroy($id)
@@ -70,40 +68,40 @@ class BannerController extends Controller
     }
 
     // Метод для оновлення банера
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'image' => 'nullable|image|max:2048',  // Не обов'язково завантажувати нове зображення
-            'image_mob' => 'nullable|image|max:2048',
-        ]);
+public function update(Request $request, $id)
+{
+$request->validate([
+'translations.*.image' => 'nullable|image|max:2048',
+'translations.*.image_mob' => 'nullable|image|max:2048',
+]);
 
-        $banner = Banner::findOrFail($id);
+$banner = Banner::findOrFail($id);
 
-        // Оновлення заголовку, якщо є
-        if ($request->filled('title')) {
-            $banner->title = $request->input('title');
-        }
+foreach (['ua', 'sk', 'ru'] as $locale) {
+$data = [];
 
-        // Оновлення основного зображення
-        if ($request->hasFile('image')) {
-            if ($banner->image) {
-                \Storage::disk('public')->delete($banner->image);  // Видалити старе зображення
-            }
+$translation = $banner->translations()->where('locale', $locale)->first();
 
-            $banner->image = $request->file('image')->store('banners', 'public');
-        }
+if ($request->hasFile("translations.$locale.image")) {
+if ($translation?->image) {
+\Storage::disk('public')->delete($translation->image);
+}
+$data['image'] = $request->file("translations.$locale.image")->store("banners/$locale", 'public');
+}
 
-        // Оновлення мобільного зображення
-        if ($request->hasFile('image_mob')) {
-            if ($banner->image_mob) {
-                \Storage::disk('public')->delete($banner->image_mob);  // Видалити старе мобільне зображення
-            }
+if ($request->hasFile("translations.$locale.image_mob")) {
+if ($translation?->image_mob) {
+\Storage::disk('public')->delete($translation->image_mob);
+}
+$data['image_mob'] = $request->file("translations.$locale.image_mob")->store("banners/$locale/mobile", 'public');
+}
 
-            $banner->image_mob = $request->file('image_mob')->store('banners/mobile', 'public');
-        }
+$banner->translations()->updateOrCreate(
+['locale' => $locale],
+$data
+);
+}
 
-        $banner->save();
-
-        return redirect()->route('admin.banners.index')->with('success', 'Банер успішно оновлено');
-    }
+return redirect()->route('admin.banners.index')->with('success', 'Банер оновлено');
+}
 }
