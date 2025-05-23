@@ -10,8 +10,8 @@
                 </span>
 
             <div class="form__fields-field-inputs">
-                <input type="text" name="name" placeholder="{{__('form.name')}}" class="form__fields-field-input default-input">
-                <input type="text" name="surname" placeholder="{{__('form.surname')}}" class="form__fields-field-input default-input">
+                <input type="text" name="name" maxlength="64" oninput="checkValidField(this)" placeholder="{{__('form.name')}}" class="form__fields-field-input default-input">
+                <input type="text" name="surname" maxlength="64" oninput="checkValidField(this)" placeholder="{{__('form.surname')}}" class="form__fields-field-input default-input">
             </div>
         </div>
         @endif
@@ -23,7 +23,7 @@
                 </span>
 
             <div class="form__fields-field-inputs">
-                <input type="email" name="email" placeholder="Email" class="form__fields-field-input default-input">
+                <input type="email" name="email" maxlength="128" oninput="checkValidField(this)" placeholder="Email" class="form__fields-field-input default-input">
             </div>
         </div>
         @endif
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <span class="form__fields-field-selector-line"></span>
-                <input type="text" name="phone" class="form__fields-field-input dropdown-input" placeholder="{{__('form.phone')}}">
+                <input type="text" name="phone" oninput="allowOnlyDigits(this); checkValidField(this)" class="form__fields-field-input dropdown-input" placeholder="{{__('form.phone')}}">
             </div>
         </div>
         @endif

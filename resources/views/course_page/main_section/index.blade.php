@@ -11,7 +11,7 @@
     </div>
 
     <div class="main-section__info">
-        <img src="/media/girl.png" alt="" class="main-section__info-image">
+        <img src="{{asset('storage/' . $course->person)}}" alt="" class="main-section__info-image">
 
         <h1 class="main-section__info-title">
             {{ $course->translation()?->title }}

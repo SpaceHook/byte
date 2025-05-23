@@ -1,8 +1,7 @@
 let selectedNumber = '+380'
 
-
 window.toggleDropdownMenu = (dropdown, event) => {
-    event.stopPropagation(); // Зупиняємо поширення події
+    event.stopPropagation();
 
     document.querySelectorAll('.form__fields-field-selector-dropdown-menu--active').forEach(menu => {
         if (menu !== dropdown.querySelector('.form__fields-field-selector-dropdown-menu')) {
@@ -40,6 +39,23 @@ function handleClickOutside(event) {
         document.removeEventListener('click', handleClickOutside);
     }
 }
+window.checkValidField = (field) => {
+    const regPhone = /^\d{7,12}$/;
+
+    if (field.name === 'phone') {
+        if (regPhone.test(field.value) && field.parentNode.classList.contains('form__fields-field-input--error')) {
+            field.parentNode.classList.remove('form__fields-field-input--error');
+        }
+    } else {
+        if (field.classList.contains('form__fields-field-input--error')) {
+            field.classList.remove('form__fields-field-input--error');
+        }
+    }
+}
+
+window.allowOnlyDigits = (selector) => {
+    selector.value = selector.value.replace(/\D/g, '');
+}
 
 document.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -55,9 +71,16 @@ document.addEventListener('submit', function (event) {
 
     fieldsWithName.shift();
 
-    console.log(fieldsWithName)
-
     fieldsWithName.forEach(field => {
+        const value = field.value.trim();
+
+        if (!value) {
+            hasError = true;
+
+            field.name === 'phone' ? field.parentNode.classList.add('form__fields-field-input--error') : field.classList.add('form__fields-field-input--error');
+        } else {
+            field.name === 'phone' ? field.parentNode.classList.remove('form__fields-field-input--error') : field.classList.remove('form__fields-field-input--error');
+        }
 
         switch (field.name) {
             case 'name':
@@ -75,10 +98,7 @@ document.addEventListener('submit', function (event) {
         }
     })
 
-    if (hasError) {
-        return;
-    }
-
+    if (hasError) return;
 
     if (form.classList.contains('form')) {
         const formData = {
@@ -114,4 +134,6 @@ document.addEventListener('submit', function (event) {
                 console.log(error)
             });
     }
+
+    form.reset();
 });
