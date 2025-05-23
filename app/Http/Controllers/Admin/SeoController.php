@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SeoText;
+use Illuminate\Validation\Rule;
 
 class SeoController extends Controller
 {
@@ -30,13 +31,19 @@ class SeoController extends Controller
      */
     public function store(Request $request)
     {
-        $existingSeoText = SeoText::where('page', $request->input('page'))->first();
+            $request->validate([
+        'page' => 'required|string|unique:seo_texts,page',
+        'meta_title' => 'required|array',
+        'meta_description' => 'nullable|array',
+        'meta_keywords' => 'nullable|array',
+        ]);
 
-        if ($existingSeoText) {
-            return redirect()->back()->withErrors('SEO-тексти для цієї сторінки вже існують.');
-        }
-
-        SeoText::create($request->all());
+        SeoText::create([
+        'page' => $request->input('page'),
+        'meta_title' => $request->input('meta_title'),
+        'meta_description' => $request->input('meta_description'),
+        'meta_keywords' => $request->input('meta_keywords'),
+        ]);
 
         return redirect()->route('admin.seo.index')->with('success', 'SEO-тексти додані');
     }
@@ -64,14 +71,20 @@ class SeoController extends Controller
         $seoText = SeoText::findOrFail($id);
 
         $request->validate([
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string',
-            'meta_keywords' => 'nullable|string|max:255',
+        'page' => ['required', 'string', Rule::unique('seo_texts')->ignore($seoText->id)],
+        'meta_title' => 'required|array',
+        'meta_description' => 'nullable|array',
+        'meta_keywords' => 'nullable|array',
         ]);
 
-        $seoText->update($request->all());
+        $seoText->update([
+        'page' => $request->input('page'),
+        'meta_title' => $request->input('meta_title'),
+        'meta_description' => $request->input('meta_description'),
+        'meta_keywords' => $request->input('meta_keywords'),
+        ]);
 
-        return redirect()->route('admin.seo.index')->with('success', 'SEO-текст успішно оновлено');
+        return redirect()->route('admin.seo.index')->with('success', 'SEO-текст оновлено');
     }
 
     /**

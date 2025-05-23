@@ -19,7 +19,7 @@ Route::middleware([LocaleMiddleware::class])->group(function () {
         Route::get('/', [MainPageController::class, 'index'])->name('main_page.index');
         Route::post('/form-submit', [FormController::class, 'submit'])->name('form.submit');
 
-        Route::get('/course-{id}', [CoursePageController::class, 'show'])
+        Route::get('/course/{id}', [CoursePageController::class, 'show'])
             ->where('id', '[0-9]+')
             ->name('course.show');
     });

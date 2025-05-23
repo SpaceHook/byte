@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $seoText->meta_title ?? 'Byte' }}</title>
-    <meta name="description" content="{{ $seoText->meta_description ?? '' }}">
-    <meta name="keywords" content="{{ $seoText->meta_keywords ?? '' }}">
+
+    <title>{{ $seoText->meta_title[app()->getLocale()] ?? 'Byte' }}</title>
+    <meta name="description" content="{{ $seoText->meta_description[app()->getLocale()] ?? '' }}">
+    <meta name="keywords" content="{{ $seoText->meta_keywords[app()->getLocale()] ?? '' }}">
+
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
