@@ -3,16 +3,17 @@
 
     <form method="POST" action="{{ route('login') }}" class="auth__form">
         @csrf
-        <!-- Email Address -->
+
+        <!-- Username (name) -->
         <div class="auth__form-field">
             <span class="auth__form-field-name">
-                Email
+                Username
             </span>
-            <input id="email" class="input" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
-            @if ($errors->has('email'))
-                <div class="mt-2 text-red-600">
-                    {{ $errors->first('email') }}
-                </div>
+            <input id="name" class="input" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="username">
+            @if ($errors->has('name'))
+            <div class="mt-2 text-red-600">
+                {{ $errors->first('name') }}
+            </div>
             @endif
         </div>
 
@@ -21,13 +22,11 @@
             <span class="auth__form-field-name">
                 Password
             </span>
-
             <input id="password" class="input" type="password" name="password" required autocomplete="current-password">
-
             @if ($errors->has('password'))
-                <div class="mt-2 text-red-600">
-                    {{ $errors->first('password') }}
-                </div>
+            <div class="mt-2 text-red-600">
+                {{ $errors->first('password') }}
+            </div>
             @endif
         </div>
 
